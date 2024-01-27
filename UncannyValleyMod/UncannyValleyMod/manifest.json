@@ -1,0 +1,10 @@
+{
+  "Name": "UncannyValleyMod",
+  "Author": "Jacob Sisco",
+  "Version": "1.0.0",
+  "Description": "Horror mod for Stardew Valley",
+  "UniqueID": "JacobSisco.UncannyValleyMod",
+  "EntryDll": "UncannyValleyMod.dll",
+  "MinimumApiVersion": "3.0.0",
+  "UpdateKeys": []
+}
