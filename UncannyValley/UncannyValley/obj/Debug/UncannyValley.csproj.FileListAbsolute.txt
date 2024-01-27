@@ -1,4 +1,0 @@
-D:\Profiles\jbs8210\source\repos\UncannyValleyMod\UncannyValley\UncannyValley\bin\Debug\UncannyValley.dll
-D:\Profiles\jbs8210\source\repos\UncannyValleyMod\UncannyValley\UncannyValley\obj\Debug\UncannyValley.csproj.AssemblyReference.cache
-D:\Profiles\jbs8210\source\repos\UncannyValleyMod\UncannyValley\UncannyValley\obj\Debug\UncannyValley.csproj.CoreCompileInputs.cache
-D:\Profiles\jbs8210\source\repos\UncannyValleyMod\UncannyValley\UncannyValley\obj\Debug\UncannyValley.dll
