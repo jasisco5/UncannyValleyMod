@@ -1,0 +1,22 @@
+{
+    "Format": "1.23.0",
+ 
+    "CustomLocations": [
+       // add the in-game location
+       {
+          "Name": "Custom_Town",
+          "FromMapFile": "assets/CustomTown.tmx"
+       }
+    ],
+
+    "Changes": [
+      {
+         "Action": "EditMap",
+         "Target": "Maps/Town",
+         "FromFile": "assets/CustomTown.tmx",
+         "AddWarps": [
+            
+         ]
+      }
+    ]
+}
