@@ -1,0 +1,11 @@
+{
+    "Name": "CustomMaps",
+    "Author": "Justin Walraven",
+    "Version": "1.0.0",
+    "Description": "Custom maps for our mod, this includes pelican town, mansion exterior and interior",
+    "UniqueID": "JustinWalraven.CustomMaps",
+    "UpdateKeys": [],
+    "ContentPackFor": {
+        "UniqueID": "Pathoschild.ContentPatcher"
+    }
+}
