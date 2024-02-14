@@ -1,0 +1,11 @@
+// This Displays Mod Information To Console On Launch
+{
+  "Format": "1.30.0",
+  "Changes": [
+    {
+      "Action": "EditImage",
+      "Target": "Maps/springobjects",
+      "FromFile": "assets/fish-object.png"
+    }
+  ]
+}

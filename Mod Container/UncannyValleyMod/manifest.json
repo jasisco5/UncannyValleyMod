@@ -7,4 +7,7 @@
   "EntryDll": "UncannyValleyMod.dll",
   "MinimumApiVersion": "3.0.0",
   "UpdateKeys": []
+  //"ContentPackFor": {
+    //"UniqueID": "Pathoschild.ContentPatcher"
+  //}
 }
