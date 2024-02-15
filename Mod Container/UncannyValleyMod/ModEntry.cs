@@ -5,11 +5,12 @@ using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewModdingAPI.Utilities;
 using StardewValley;
+using StardewValley.TerrainFeatures;
 
 namespace UncannyValleyMod
 {
     /// <summary>The mod entry point.</summary>
-    internal sealed class ModEntry : Mod
+    internal sealed class ModEntry : Mod, IAssetLoader
     {
         /*********
         ** Public methods
@@ -19,12 +20,25 @@ namespace UncannyValleyMod
         public override void Entry(IModHelper helper)
         {
             helper.Events.Input.ButtonPressed += this.OnButtonPressed;
-        }
 
+            helper.Events.Player.Warped += this.OnWarped;
+
+            helper.Events.GameLoop.SaveLoaded += this.OnSaveLoaded;
+        }
 
         /*********
         ** Private methods
         *********/
+        private void OnSaveLoaded(object sender, SaveLoadedEventArgs e)
+        {
+            // Load MansionExterior
+            // get the internal asset key for the map file
+            string mapAssetKey = this.Helper.Content.GetActualAssetKey("assets/maps/CustomMansion.tmx", ContentSource.ModFolder);
+            // add the location
+            GameLocation customMap = new GameLocation(mapAssetKey, "MansionExterior") { IsOutdoors = true, IsFarm = false };
+            Game1.locations.Add(customMap);
+        }
+
         /// <summary>Raised after the player presses a button on the keyboard, controller, or mouse.</summary>
         /// <param name="sender">The event sender.</param>
         /// <param name="e">The event data.</param>
@@ -35,7 +49,48 @@ namespace UncannyValleyMod
                 return;
 
             // print button presses to the console window
-            this.Monitor.Log($"{Game1.player.Name} pressed {e.Button}.", LogLevel.Debug);
+            //this.Monitor.Log($"{Game1.player.Name} pressed {e.Button}.", LogLevel.Debug);
+        }
+
+
+        private void OnWarped(object sender, WarpedEventArgs e)
+        {
+            this.Monitor.Log($"{e.Player.Name} warped from {e.OldLocation} to {e.NewLocation}", LogLevel.Debug);
+            // Player is in the FarmHouse
+            if (Game1.getLocationFromName("FarmHouse") == e.NewLocation)
+            {
+                this.Monitor.Log($"{e.Player.Name} is in FarmHouse", LogLevel.Debug);
+                // Spawn a Journal Scrap
+                if (Game1.getLocationFromName("FarmHouse")
+                    .dropObject(new StardewValley.Object(new Vector2(6 * 64, 8 * 64), 842, "Journal Scrap", true, true, false, true))
+                    ) { }
+
+                return;
+            }
+            // Player is Outside the Mansion
+            if (Game1.getLocationFromName("MansionExterior") == e.NewLocation)
+            {
+                this.Monitor.Log($"{e.Player.Name} is outside the mansion", LogLevel.Debug);
+                // Spawn a Journal Scrap
+                if (Game1.getLocationFromName("MansionExterior")
+                    .dropObject(new StardewValley.Object(new Vector2(6 * 64, 8 * 64), 842, "Journal Scrap", true, true, false, true))
+                    ) { }
+
+                return;
+            }
+
+        }
+
+
+        //Loading the custom town
+        public bool CanLoad<T>(IAssetInfo asset)
+        {
+            return asset.AssetNameEquals("Maps/Town");
+        }
+
+        public T Load<T>(IAssetInfo asset)
+        {
+            return this.Helper.Content.Load<T>("assets/maps/CustomTown.tmx");
         }
     }
 }
