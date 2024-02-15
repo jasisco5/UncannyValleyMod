@@ -1,0 +1,13 @@
+{
+
+  "Name": "NPC Test",
+   "Author": "PapaChipMan",
+   "Description": "Testing a custom NPC",
+   "Version": "1.0.0",
+   "UniqueID": "PapaChipMan.NPCTest",
+   "ContentPackFor": {
+       "UniqueID": "Pathoschild.ContentPatcher"
+    },
+   "UpdateKeys": [ "" ]
+   
+}

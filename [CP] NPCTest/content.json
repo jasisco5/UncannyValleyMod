@@ -1,0 +1,53 @@
+{
+    "Format": "1.30.4",
+    "Changes": [
+        {
+            "Action": "Load",
+            "Target": "Characters/Brennan",
+            "FromFile": "assets/Image/Overworld.png"
+        },
+        {
+            "Action": "Load",
+            "Target": "Portraits/Brennan",
+            "FromFile": "assets/Image/Portraits.png"
+        },
+        {
+            "Action": "Load",
+            "Target": "Characters/Dialogue/Brennan",
+            "FromFile": "assets/Dialogue/Dialogue.json"
+        },
+        {
+            "Action": "Load",
+            "Target": "Characters/Dialogue/MarriageDialogueBrennan",
+            "FromFile": "assets/Dialogue/MarriageDialogue.json"
+        },
+        {
+            "Action": "Load",
+            "Target": "Characters/schedules/Brennan",
+            "FromFile": "assets/Schedule/Schedule.json"
+        },
+        {
+            "Action": "EditData",
+            "Target": "Data/NPCDispositions",
+            "Entries": {
+                "Brennan": "adult/polite/neutral/positive/male/non-datable//Town/winter 4//BusStop 19 4/Brennan"
+            }
+        },
+        {
+            "Action": "EditData",
+            "Target": "Data/NPCGiftTastes",
+            "Entries": {
+                "Brennan": "You're giving this to me? This is amazing!/207 232 233 400/Thank you! This is a very interesting specimen./-5 -79 422/...What is this?/80 330/This is disgusting./2/That was very thoughtful of you./-4/ "
+            }
+        },
+        {
+            "Action": "EditData",
+            "Target": "Data/EngagementDialogue",
+            "Entries": {
+                "Brennan0": "I can't believe I am about to be married!$h",
+                "Brennan1": "I hope I don't get cold feet"
+            }
+        }
+    ]
+}
+		
