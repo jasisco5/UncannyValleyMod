@@ -30,7 +30,7 @@
             "Action": "EditData",
             "Target": "Data/NPCDispositions",
             "Entries": {
-                "Brennan": "adult/polite/neutral/positive/male/non-datable//Town/winter 4//BusStop 19 4/Brennan"
+                "Brennan": "adult/polite/neutral/positive/male/non-datable//Town/winter 4//Custom_Mansion 19 4/Brennan"
             }
         },
         {

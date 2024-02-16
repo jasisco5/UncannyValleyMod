@@ -35,7 +35,7 @@ namespace UncannyValleyMod
             // get the internal asset key for the map file
             string mapAssetKey = this.Helper.Content.GetActualAssetKey("assets/maps/CustomMansion.tmx", ContentSource.ModFolder);
             // add the location
-            GameLocation customMap = new GameLocation(mapAssetKey, "MansionExterior") { IsOutdoors = true, IsFarm = false };
+            GameLocation customMap = new GameLocation(mapAssetKey, "Custom_Mansion") { IsOutdoors = true, IsFarm = false };
             Game1.locations.Add(customMap);
         }
 
