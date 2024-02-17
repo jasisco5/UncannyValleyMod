@@ -22,7 +22,9 @@
          "Action": "EditMap",
          "Target": "Maps/Town",
          "AddWarps": [
-            "119 76 Custom_Mansion_Exterior 1 49"
+            "119 76 Custom_Mansion_Exterior 1 49",
+            "119 75 Custom_Mansion_Exterior 1 48",
+            "119 77 Custom_Mansion_Exterior 1 50"
          ] 
       }
     ]
