@@ -31,7 +31,7 @@ namespace UncannyValleyMod
         *********/
         private void OnSaveLoaded(object sender, SaveLoadedEventArgs e)
         {
-            // Load MansionExterior
+            // Load Custom_Mansion
             // get the internal asset key for the map file
             string mapAssetKey = this.Helper.Content.GetActualAssetKey("assets/maps/CustomMansion.tmx", ContentSource.ModFolder);
             // add the location
@@ -68,12 +68,12 @@ namespace UncannyValleyMod
                 return;
             }
             // Player is Outside the Mansion
-            if (Game1.getLocationFromName("MansionExterior") == e.NewLocation)
+            if (Game1.getLocationFromName("Custom_Mansion") == e.NewLocation)
             {
                 this.Monitor.Log($"{e.Player.Name} is outside the mansion", LogLevel.Debug);
                 // Spawn a Journal Scrap
-                if (Game1.getLocationFromName("MansionExterior")
-                    .dropObject(new StardewValley.Object(new Vector2(6 * 64, 8 * 64), 842, "Journal Scrap", true, true, false, true))
+                if (Game1.getLocationFromName("Custom_Mansion")
+                    .dropObject(new StardewValley.Object(new Vector2(12 * 64, 48 * 64), 842, "Journal Scrap", true, true, false, true))
                     ) { }
 
                 return;
