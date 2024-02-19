@@ -1,16 +1,20 @@
 ﻿using System;
 using System.Threading;
+using Netcode;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewModdingAPI.Utilities;
 using StardewValley;
+using StardewValley.Menus;
+using StardewValley.Tools;
 using StardewValley.TerrainFeatures;
 
 namespace UncannyValleyMod
 {
     /// <summary>The mod entry point.</summary>
-    internal sealed class ModEntry : Mod, IAssetLoader
+    internal sealed class ModEntry : Mod, IAssetLoader, IAssetEditor
     {
         /*********
         ** Public methods
@@ -64,7 +68,9 @@ namespace UncannyValleyMod
                 if (Game1.getLocationFromName("FarmHouse")
                     .dropObject(new StardewValley.Object(new Vector2(6 * 64, 8 * 64), 842, "Journal Scrap", true, true, false, true))
                     ) { }
-
+                MeleeWeapon weapon = new MeleeWeapon(65);
+                weapon.ParentSheetIndex = 65;
+                Game1.player.addItemToInventory(weapon);
                 return;
             }
             // Player is Outside the Mansion
@@ -91,6 +97,42 @@ namespace UncannyValleyMod
         public T Load<T>(IAssetInfo asset)
         {
             return this.Helper.Content.Load<T>("assets/maps/CustomTown.tmx");
+        }
+
+        // adding weapon data
+        public bool CanLoadWeapon<T>(IAssetInfo asset)
+        {
+            if (asset.Name.IsEquivalentTo("TileSheets/Weapons"))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public T LoadWeapon<T>(IAssetInfo asset)
+        {
+            if (asset.Name.IsEquivalentTo("TileSheets/Weapons"))
+            {
+                return ((Mod)this).Helper.Content.Load<T>("assets/Images/weapons.png", (ContentSource)1);
+            }
+            throw new InvalidOperationException("Unexpected asset '" + asset.Name + "'.");
+        }
+
+        public bool CanEdit<T>(IAssetInfo asset)
+        {
+            if (asset.Name.IsEquivalentTo("Data/Weapons"))
+            {
+                return true;
+            }
+            return false;
+        }
+        public void Edit<T>(IAssetData asset)
+        {
+            if (((IAssetInfo)asset).Name.IsEquivalentTo("Data/Weapons"))
+            {
+                IDictionary<int, string> data = ((IAssetData<IDictionary<int, string>>)(object)asset.AsDictionary<int, string>()).Data;
+                data[65] = "Spectral Sabre/A blade to reap the life and energy from monsters./80/100/1/8/0/0/3/5/5/0/.04/2";
+            }
         }
     }
 }

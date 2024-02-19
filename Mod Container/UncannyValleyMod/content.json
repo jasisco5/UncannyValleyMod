@@ -3,9 +3,18 @@
   "Format": "1.30.0",
   "Changes": [
     {
-      "Action": "EditImage",
-      "Target": "Maps/springobjects",
-      "FromFile": "assets/fish-object.png"
+      "$ItemType": "MeleeWeapon",
+      "ID": "StabbyStabber",
+      "Type": "Dagger",
+      "Texture": "assets/weapons.png:0",
+
+      "MinimumDamage": 999999999,
+      "MaximumDamage": 1000000000,
+      "Knockback": 1000000000,
+      "Defense": 1000000000,
+      "ExtraSwingArea": 1000000000,
+      "CritChance": 0.0,
+      "CritMultiplier": 0
     }
   ]
 }
