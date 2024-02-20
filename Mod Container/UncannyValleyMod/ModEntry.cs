@@ -34,13 +34,13 @@ namespace UncannyValleyMod
         ** Private methods
         *********/
         private void OnSaveLoaded(object sender, SaveLoadedEventArgs e)
-        {
+        {/*
             // Load Custom_Mansion
             // get the internal asset key for the map file
             string mapAssetKey = this.Helper.Content.GetActualAssetKey("assets/maps/CustomMansion.tmx", ContentSource.ModFolder);
             // add the location
             GameLocation customMap = new GameLocation(mapAssetKey, "Custom_Mansion") { IsOutdoors = true, IsFarm = false };
-            Game1.locations.Add(customMap);
+            Game1.locations.Add(customMap);*/
         }
 
         /// <summary>Raised after the player presses a button on the keyboard, controller, or mouse.</summary>
@@ -84,23 +84,11 @@ namespace UncannyValleyMod
 
                 return;
             }
-
-        }
-
-
-        //Loading the custom town
-        public bool CanLoad<T>(IAssetInfo asset)
-        {
-            return asset.AssetNameEquals("Maps/Town");
-        }
-
-        public T Load<T>(IAssetInfo asset)
-        {
-            return this.Helper.Content.Load<T>("assets/maps/CustomTown.tmx");
+            
         }
 
         // adding weapon data
-        public bool CanLoadWeapon<T>(IAssetInfo asset)
+        public bool CanLoad<T>(IAssetInfo asset)
         {
             if (asset.Name.IsEquivalentTo("TileSheets/Weapons"))
             {
@@ -108,12 +96,14 @@ namespace UncannyValleyMod
             }
             return false;
         }
+        
 
-        public T LoadWeapon<T>(IAssetInfo asset)
+        public T Load<T>(IAssetInfo asset)
         {
+            this.Monitor.Log("Loading Weapon");
             if (asset.Name.IsEquivalentTo("TileSheets/Weapons"))
             {
-                return ((Mod)this).Helper.Content.Load<T>("assets/Images/weapons.png", (ContentSource)1);
+                return ((Mod)this).Helper.Content.Load<T>("assets/weapons/weapons.png", (ContentSource)1);
             }
             throw new InvalidOperationException("Unexpected asset '" + asset.Name + "'.");
         }
