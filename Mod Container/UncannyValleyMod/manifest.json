@@ -6,8 +6,11 @@
   "UniqueID": "JacobSisco.UncannyValleyMod",
   "EntryDll": "UncannyValleyMod.dll",
   "MinimumApiVersion": "3.0.0",
-  "UpdateKeys": [] //,
-  //"Dependencies": {
-    //"UniqueID": "Pathoschild.ContentPatcher"
-  //}
+  "UpdateKeys": [] ,
+  "Dependencies": [
+    {
+      "UniqueID": "Pathoschild.ContentPatcher",
+      "MinimumVersion": "1.30.0"
+    }
+  ]
 }

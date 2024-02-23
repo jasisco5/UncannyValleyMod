@@ -27,7 +27,82 @@ namespace UncannyValleyMod
 
             helper.Events.Player.Warped += this.OnWarped;
 
+            helper.Events.GameLoop.GameLaunched += this.OnGameLaunched;
+
             helper.Events.GameLoop.SaveLoaded += this.OnSaveLoaded;
+        }
+
+        /// <summary>
+        /// Connections between the Content Patcher and SMAPI
+        /// </summary>
+        public void OnGameLaunched(object sender, GameLaunchedEventArgs e)
+        {
+            // Get a reference to the Content Patcher API
+            var api = this.Helper.ModRegistry.GetApi<ContentPatcher.IContentPatcherAPI>("Pathoschild.ContentPatcher");
+
+            ///
+            /// Checking Conditions
+            ///
+            // Create a model of the conditions you want to check
+            var rawConditions = new Dictionary<string, string>
+            {
+                ["PlayerGender"] = "male",             // player is male
+                ["Relationship: Abigail"] = "Married", // player is married to Abigail
+                ["HavingChild"] = "{{spouse}}",        // Abigail is having a child
+                ["Season"] = "Winter"                  // current season is winter
+            };
+
+            // Call the API to parse the conditions into an IManagedConditions wrapper
+            // This is an expensive operation, so stash this wrapper if you want to reuse it
+            var conditions = api.ParseConditions(
+               manifest: this.ModManifest,
+               rawConditions: rawConditions,
+               formatVersion: new SemanticVersion("1.30.0")
+            );
+
+            // Conditions don't update automatically
+            conditions.UpdateContext();
+
+            ///
+            /// Adding a token to Content Patcher api
+            /// 
+            // To use it in a Content Pack, list this mod as a dependency 
+            api.RegisterToken(this.ModManifest, "PlayerName", () =>
+            {
+                // save is loaded
+                if (Context.IsWorldReady)
+                    return new[] { Game1.player.Name };
+
+                // or save is currently loading
+                if (SaveGame.loaded?.player != null)
+                    return new[] { SaveGame.loaded.player.Name };
+
+                // no save loaded (e.g. on the title screen)
+                return null;
+            });
+
+            ///
+            /// Loading owned Content Packs
+            ///
+            foreach (IContentPack contentPack in this.Helper.ContentPacks.GetOwned())
+            {
+                this.Monitor.Log($"Reading content pack: {contentPack.Manifest.Name} {contentPack.Manifest.Version} from {contentPack.DirectoryPath}");
+
+                // Loading JSON Data
+                {
+                    //YourDataModel data = contentPack.ReadJsonFile<YourDataFile>("content.json");
+                }
+                // Read Content Data
+                {
+                    //Texture2D image = contentPack.LoadAsset<Texture2D>("image.png");
+
+                    // Passing an asset name to game code
+                    //tilesheet.ImageSource = contentPack.GetActualAssetKey("image.png");
+                }
+
+            }
+
+
         }
 
         /*********
