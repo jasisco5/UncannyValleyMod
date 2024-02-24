@@ -6,10 +6,10 @@
 
 	<ItemGroup>
 		<PackageReference Include="Pathoschild.Stardew.ModBuildConfig" Version="4.1.1" />
+		<Reference Include="ContentPatcher" HintPath="$(GameModsPath)\ContentPatcher\ContentPatcher.dll" Private="False" />
+		<Reference Include="QuestFramework" HintPath="$(GameModsPath)\QuestFramework\QuestFramework.dll" Private="False" />
+		<Reference Include="QuestEssentials" HintPath="$(GameModsPath)\QuestEssentials\QuestEssentials.dll" Private="False" />
 	</ItemGroup>
 
-	<ItemGroup>
-		<Reference Include="ContentPatcher" HintPath="$(GameModsPath)\ContentPatcher\ContentPatcher.dll" Private="False" />
-	</ItemGroup>
 
 </Project>
