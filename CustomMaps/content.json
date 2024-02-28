@@ -40,7 +40,7 @@
                "Position": {"X": 25, "Y": 26},
                "Layer": "Buildings",
                "SetProperties": {
-                  "Action": "Warp 29 54 Custom_Mansion_Interior"
+                  "Action": "Warp 29 51 Custom_Mansion_Interior"
                }
             }
          ],
