@@ -177,6 +177,8 @@ namespace UncannyValleyMod
                     .dropObject(new StardewValley.Object(new Vector2(6 * 64, 8 * 64), 842, "Journal Scrap", true, true, false, true))
                     ) { }
                 MeleeWeapon weapon = new MeleeWeapon(65);
+                BaseWeaponEnchantment reaping = new ReapingEnchantment();
+                weapon.AddEnchantment(reaping);
                 weapon.ParentSheetIndex = 65;
                 Game1.player.addItemToInventory(weapon);
                 return;

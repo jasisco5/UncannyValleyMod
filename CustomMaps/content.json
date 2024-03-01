@@ -6,6 +6,10 @@
        // MAKE SURE THE MAP YOU ARE TESTING HAS A WARP IN THE MAP PROPERTIES, HAVING NO MAP PROPERTIES WILL LEAD TO MAP NOT LOADING
        {
          "Name": "Custom_Mansion_Exterior",
+         "FromMapFile": "assets/CustomMansionExterior.tmx"
+       },
+       {
+         "Name": "Custom_Mansion_Interior",
          "FromMapFile": "assets/CustomMansion.tmx"
        }
     ],
@@ -26,6 +30,24 @@
             "119 75 Custom_Mansion_Exterior 1 48",
             "119 77 Custom_Mansion_Exterior 1 50"
          ] 
+      },
+      {
+         // try adding a conditional warp
+         "Action": "EditMap",
+         "Target": "Maps/Custom_Mansion_Exterior",
+         "MapTiles": [
+            {
+               "Position": {"X": 25, "Y": 26},
+               "Layer": "Buildings",
+               "SetProperties": {
+                  "Action": "Warp 29 51 Custom_Mansion_Interior"
+               }
+            }
+         ],
+         "When": {
+            "PlayerGender": "Male"
+         }
       }
-    ]
+
+   ]
 }
