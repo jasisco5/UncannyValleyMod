@@ -30,6 +30,9 @@ namespace UncannyValleyMod
         /// <param name="helper">Provides simplified APIs for writing mods.</param>
         public override void Entry(IModHelper helper)
         {
+            // Get C# modded mail
+            new ModMail(helper);
+
             helper.Events.Input.ButtonPressed += this.OnButtonPressed;
 
             helper.Events.Player.Warped += this.OnWarped;
@@ -135,7 +138,7 @@ namespace UncannyValleyMod
                 // Conditions don't update automatically
                 conditions.UpdateContext();
             }
-            
+
             /*
             // Load Custom_Mansion
             // get the internal asset key for the map file
@@ -143,6 +146,9 @@ namespace UncannyValleyMod
             // add the location
             GameLocation customMap = new GameLocation(mapAssetKey, "Custom_Mansion") { IsOutdoors = true, IsFarm = false };
             Game1.locations.Add(customMap);*/
+
+            // Cutom Mail
+            Game1.player.mailbox.Add("MyModMail1");
         }
 
         /// <summary>Raised after the player presses a button on the keyboard, controller, or mouse.</summary>
