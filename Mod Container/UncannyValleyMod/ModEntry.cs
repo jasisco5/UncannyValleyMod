@@ -217,7 +217,18 @@ namespace UncannyValleyMod
 
                 return;
             }
-            
+            // Player is leaving the farm
+            if (Game1.getLocationFromName("Farm") == e.OldLocation)
+            {
+                Game1.isRaining = true;
+                Game1.isDebrisWeather = true;
+            }
+            if (Game1.getLocationFromName("Farm") == e.NewLocation)
+            {
+                Game1.isRaining = false;
+            }
+
+
         }
 
         // Content Patcher Tokens
