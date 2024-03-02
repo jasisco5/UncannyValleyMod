@@ -18,10 +18,12 @@ namespace UncannyValleyMod
     /// <summary>The mod entry point.</summary>
     internal sealed class ModEntry : Mod, IAssetLoader, IAssetEditor
     {
+        // Variables
         IContentPatcherAPI cpApi;
         IManagedQuestApi qfManagedApi;
         IQuestApi qfApi;
-
+        IModHelper helper;
+        ModSaveData saveModel;
 
         /*********
         ** Public methods
@@ -30,6 +32,7 @@ namespace UncannyValleyMod
         /// <param name="helper">Provides simplified APIs for writing mods.</param>
         public override void Entry(IModHelper helper)
         {
+            this.helper = helper;
             // Get C# modded mail
             new ModMail(helper);
 
@@ -40,7 +43,11 @@ namespace UncannyValleyMod
             helper.Events.GameLoop.GameLaunched += this.OnGameLaunched;
 
             helper.Events.GameLoop.SaveLoaded += this.OnSaveLoaded;
+
+            helper.Events.GameLoop.Saving += this.OnSaving;
         }
+
+        
 
         /// <summary>
         /// Connections between the Content Patcher and SMAPI
@@ -111,6 +118,10 @@ namespace UncannyValleyMod
         /*********
         ** Private methods
         *********/
+        private void OnSaving(object sender, SavingEventArgs e)
+        {
+            this.helper.Data.WriteSaveData("savedata", saveModel);
+        }
         private void OnSaveLoaded(object sender, SaveLoadedEventArgs e)
         {
             // Content Patcher Conditionals
@@ -149,6 +160,15 @@ namespace UncannyValleyMod
 
             // Cutom Mail
             Game1.player.mailbox.Add("MyModMail1");
+
+            // Custom Save Data
+            saveModel = this.Helper.Data.ReadSaveData<ModSaveData>("savedata");
+            if(saveModel == null)
+            {
+                // create empty entry
+                this.Helper.Data.WriteSaveData<ModSaveData>("savedata", new ModSaveData());
+                saveModel = this.Helper.Data.ReadSaveData<ModSaveData>("savedata");
+            }
         }
 
         /// <summary>Raised after the player presses a button on the keyboard, controller, or mouse.</summary>
@@ -163,8 +183,6 @@ namespace UncannyValleyMod
             // print button presses to the console window
             //this.Monitor.Log($"{Game1.player.Name} pressed {e.Button}.", LogLevel.Debug);
         }
-
-
         private void OnWarped(object sender, WarpedEventArgs e)
         {
             this.Monitor.Log($"{e.Player.Name} warped from {e.OldLocation} to {e.NewLocation}", LogLevel.Debug);
@@ -173,9 +191,14 @@ namespace UncannyValleyMod
             {
                 this.Monitor.Log($"{e.Player.Name} is in FarmHouse", LogLevel.Debug);
                 // Spawn a Journal Scrap
-                if (Game1.getLocationFromName("FarmHouse")
-                    .dropObject(new StardewValley.Object(new Vector2(6 * 64, 8 * 64), 842, "Journal Scrap", true, true, false, true))
-                    ) { }
+                if (saveModel.canSpawnNote)
+                {
+                    Game1.getLocationFromName("FarmHouse")
+                     .dropObject(new StardewValley.Object(new Vector2(6 * 64, 8 * 64),
+                     842, "Journal Scrap", true, true, false, true));
+                    saveModel.canSpawnNote = false;
+                }
+                
                 MeleeWeapon weapon = new MeleeWeapon(65);
                 BaseWeaponEnchantment reaping = new ReapingEnchantment();
                 weapon.AddEnchantment(reaping);
@@ -197,6 +220,30 @@ namespace UncannyValleyMod
             
         }
 
+        // Content Patcher Tokens
+        private void AddTokens()
+        {
+            ///
+            /// Adding a token to Content Patcher api
+            /// 
+            // To use it in a Content Pack, list this mod as a dependency 
+            cpApi.RegisterToken(this.ModManifest, "PlayerName", () =>
+            {
+                // save is loaded
+                if (Context.IsWorldReady)
+                    return new[] { Game1.player.Name };
+
+                // or save is currently loading
+                if (SaveGame.loaded?.player != null)
+                    return new[] { SaveGame.loaded.player.Name };
+
+                // no save loaded (e.g. on the title screen)
+                return null;
+            });
+
+
+        }
+
         // adding weapon data
         public bool CanLoad<T>(IAssetInfo asset)
         {
@@ -206,8 +253,6 @@ namespace UncannyValleyMod
             }
             return false;
         }
-        
-
         public T Load<T>(IAssetInfo asset)
         {
             this.Monitor.Log("Loading Weapon");
