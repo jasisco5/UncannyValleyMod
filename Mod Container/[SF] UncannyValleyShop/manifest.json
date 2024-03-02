@@ -1,0 +1,12 @@
+{
+    "Name": "[SF] UncannyValleyShop",
+    "Author": "UncannyValley",
+    "Version": "0.1.0",
+    "Description": "The Wizard Aprrentice's shop from Uncanny Valley.",
+    "UniqueID": "UncannyValley.UncannyValleyShop",
+	"MinimumApiVersion": "3.0.0",
+    "UpdateKeys": [],
+	"ContentPackFor": {
+		"UniqueID": "Cherry.ShopTileFramework"
+	}
+}
