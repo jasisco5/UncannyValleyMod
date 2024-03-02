@@ -8,5 +8,12 @@
     "UpdateKeys": [],
 	"ContentPackFor": {
 		"UniqueID": "Cherry.ShopTileFramework"
-	}
+	},
+	"Dependencies": [
+		{
+			"UniqueID": "JacobSisco.UncannyValleyMod",
+			"MinimumVersion": "0.0.1"
+		}
+	]
 }
+
