@@ -21,14 +21,14 @@
 
 {
 
-	"Introduction": "Greetings, I am Sirius Dawnstrider. Apprentice to the great wizard of Stardew Valley!#$b# What is your name? #$b# @ huh? What a good name! I look forward to getting to know you!",
-	"Mon": "Hey @, I got a quick question for you...#$b#$q 6000/6001 mon_template#Do you know how to make question events?#$r 6000 250 mon_yes#Sure do#$r 6001 500 mon_no#I don't know how",
-	"mon_yes": "That's great to know... You should use them once in a while to help develop closer bonds to your NPC",
-	"mon_no": "No? Well let's look at my question.#$b# The first part is the question indicator.. the dollar sign+ the q.. This tells the game that I am about to ask a question.#$b#The first set of numbers are my response IDs.  The game will store the response to these numbers. #$b#The mon_template is my fallback... how I talk to you after the question has been answered.#$b# The dollar sign + r indicates that you are starting responses, the first number is the ID of the response and the second number is how many friendship points it gives. One heart is 250 points.  It also needs a response dialogue from me as well.#$b#Notice that responses and questions are divided by hashtags.",
-	"mon_template": "$p 6000#If you answered yes... You will see this dialogue.|If you did not, you will see this dialogue.",
+	"Introduction": "Hey @. Glad to see you're interested in ghost stories",
+	"Mon": "Hey @, I got a quick question for you...#$b#$q 6000/6001 mon_template#Did you believe in ghosts before this whole thing?#$r 6000 250 mon_yes#Sure did#$r 6001 500 mon_no#Nope",
+	"mon_yes": "I always believed they were real. I mean, they had to exist somewhere, right?",
+	"mon_no": "No? Huh, I always did.",
+	"mon_template": "$p 6000#I mean, ghosts are really cool when you think about it.",
 	"Tue": "Today is Tuesday! That means there's work to do!",
-	"Wed": "Portrait expressions are important to convey the scene.$1#$b#When making portraits, remember this:#$b#1 is happy, 2 is sad, 3 is unique, 4 is blushing, 5 is angry.#$b#You can have up to 12 portraits as far as I know.",
-	"Thu": "Some dialogue is found elsewhere in the contents.. I will help you find the most relavent.",
-	"Fri": "You can also give people items like this. [70]#$b#Use Cane's Resource to see Item IDs and other important things."
+	"Wed": "It's crazy to think that there were ghosts living near us this whole time.",
+	"Thu": "I remember as a kid, I thought my uncle was the coolest guy in the world!#$b#Now, eh, he's still cool I guess...",
+	"Fri": "It's friday, and I am at a ghost mansion."
 
 }
