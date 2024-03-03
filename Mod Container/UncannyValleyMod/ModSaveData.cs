@@ -9,6 +9,7 @@ namespace UncannyValleyMod
     public sealed class ModSaveData
     {
         public bool canSpawnNote { get; set; } = true;
+        public bool weaponObtained { get; set; } = false;
         public int ExampleNumber { get; set; } = 0;
     }
 }

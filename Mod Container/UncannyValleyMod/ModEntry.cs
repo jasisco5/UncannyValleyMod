@@ -16,7 +16,7 @@ using ContentPatcher;
 namespace UncannyValleyMod
 {
     /// <summary>The mod entry point.</summary>
-    internal sealed class ModEntry : Mod, IAssetLoader, IAssetEditor
+    internal sealed class ModEntry : Mod
     {
         // Variables
         IContentPatcherAPI cpApi;
@@ -24,6 +24,10 @@ namespace UncannyValleyMod
         IQuestApi qfApi;
         IModHelper helper;
         ModSaveData saveModel;
+
+        // Other File References
+        ModMail modMail;
+        ModWeapon modWeapon;
 
         /*********
         ** Public methods
@@ -33,9 +37,11 @@ namespace UncannyValleyMod
         public override void Entry(IModHelper helper)
         {
             this.helper = helper;
-            // Get C# modded mail
-            new ModMail(helper);
+            // Get C# modded content
+            modMail = new ModMail(helper);
+            modWeapon = new ModWeapon(helper);
 
+            // Set Up Events
             helper.Events.Input.ButtonPressed += this.OnButtonPressed;
 
             helper.Events.Player.Warped += this.OnWarped;
@@ -47,8 +53,13 @@ namespace UncannyValleyMod
             helper.Events.GameLoop.Saving += this.OnSaving;
         }
 
-        
 
+
+
+
+        /*********
+        ** Private methods
+        *********/
         /// <summary>
         /// Connections between the Content Patcher and SMAPI
         /// </summary>
@@ -56,7 +67,7 @@ namespace UncannyValleyMod
         {
             // Reference to Content Patcher
             cpApi = this.Helper.ModRegistry.GetApi<ContentPatcher.IContentPatcherAPI>("Pathoschild.ContentPatcher");
-            
+
             // Working with Quest Framework
             {
                 qfApi = this.Helper.ModRegistry.GetApi<IQuestApi>("PurrplingCat.QuestFramework");
@@ -68,27 +79,27 @@ namespace UncannyValleyMod
                 };
             }
 
-            
 
             // Working with Content Patcher
+            AddTokens();
             {
                 ///
                 /// Adding a token to Content Patcher api
                 /// 
                 // To use it in a Content Pack, list this mod as a dependency 
-                cpApi.RegisterToken(this.ModManifest, "PlayerName", () =>
-                {
-                    // save is loaded
-                    if (Context.IsWorldReady)
-                        return new[] { Game1.player.Name };
-
-                    // or save is currently loading
-                    if (SaveGame.loaded?.player != null)
-                        return new[] { SaveGame.loaded.player.Name };
-
-                    // no save loaded (e.g. on the title screen)
-                    return null;
-                });
+                //cpApi.RegisterToken(this.ModManifest, "PlayerName", () =>
+                //{
+                //    // save is loaded
+                //    if (Context.IsWorldReady)
+                //        return new[] { Game1.player.Name };
+                //
+                //    // or save is currently loading
+                //    if (SaveGame.loaded?.player != null)
+                //        return new[] { SaveGame.loaded.player.Name };
+                //
+                //    // no save loaded (e.g. on the title screen)
+                //    return null;
+                //});
 
                 ///
                 /// Loading owned Content Packs
@@ -114,10 +125,6 @@ namespace UncannyValleyMod
 
 
         }
-
-        /*********
-        ** Private methods
-        *********/
         private void OnSaving(object sender, SavingEventArgs e)
         {
             this.helper.Data.WriteSaveData("savedata", saveModel);
@@ -169,6 +176,7 @@ namespace UncannyValleyMod
                 this.Helper.Data.WriteSaveData<ModSaveData>("savedata", new ModSaveData());
                 saveModel = this.Helper.Data.ReadSaveData<ModSaveData>("savedata");
             }
+            modWeapon.saveModel = saveModel;
         }
 
         /// <summary>Raised after the player presses a button on the keyboard, controller, or mouse.</summary>
@@ -198,12 +206,7 @@ namespace UncannyValleyMod
                      842, "Journal Scrap", true, true, false, true));
                     saveModel.canSpawnNote = false;
                 }
-                
-                MeleeWeapon weapon = new MeleeWeapon(65);
-                BaseWeaponEnchantment reaping = new ReapingEnchantment();
-                weapon.AddEnchantment(reaping);
-                weapon.ParentSheetIndex = 65;
-                Game1.player.addItemToInventory(weapon);
+                if (!saveModel.weaponObtained) { modWeapon.AddWeaponToInv(); }
                 return;
             }
             // Player is Outside the Mansion
@@ -231,6 +234,8 @@ namespace UncannyValleyMod
 
         }
 
+
+        // Helper Methods
         // Content Patcher Tokens
         private void AddTokens()
         {
@@ -253,42 +258,6 @@ namespace UncannyValleyMod
             });
 
 
-        }
-
-        // adding weapon data
-        public bool CanLoad<T>(IAssetInfo asset)
-        {
-            if (asset.Name.IsEquivalentTo("TileSheets/Weapons"))
-            {
-                return true;
-            }
-            return false;
-        }
-        public T Load<T>(IAssetInfo asset)
-        {
-            this.Monitor.Log("Loading Weapon");
-            if (asset.Name.IsEquivalentTo("TileSheets/Weapons"))
-            {
-                return ((Mod)this).Helper.Content.Load<T>("assets/weapons/weapons.png", (ContentSource)1);
-            }
-            throw new InvalidOperationException("Unexpected asset '" + asset.Name + "'.");
-        }
-
-        public bool CanEdit<T>(IAssetInfo asset)
-        {
-            if (asset.Name.IsEquivalentTo("Data/Weapons"))
-            {
-                return true;
-            }
-            return false;
-        }
-        public void Edit<T>(IAssetData asset)
-        {
-            if (((IAssetInfo)asset).Name.IsEquivalentTo("Data/Weapons"))
-            {
-                IDictionary<int, string> data = ((IAssetData<IDictionary<int, string>>)(object)asset.AsDictionary<int, string>()).Data;
-                data[65] = "Spectral Sabre/A blade to reap the life and energy from monsters./80/100/1/8/0/0/3/5/5/0/.04/2";
-            }
         }
     }
 }

@@ -396,3 +396,4 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/Mod Container/UncannyValleyMod/UncannyValleyMod.dll
