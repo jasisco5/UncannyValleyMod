@@ -58,7 +58,7 @@
             "Action": "EditData",
             "Target": "Data/Events/Custom_Mansion_Exterior",
             "Entries": {
-                "20020614/t 600 1500/w sunny": "ragtime/25 37/farmer 23 48 1 Brennan 27 37 0/move farmer 0 -11 1 false/pause 1000/speak Brennan \"Hi there. Never seen you around here before.\"/pause 1000/speak Brennan \"Name's Sirius. I'm a wizard... or an apprentice one at least.$s#$b#What's your name?\"/pause 1000/speak Brennan \"@ huh? Cool.\"/pause 1200/speak Brennan \"I heard some reports that there was a ghost sighting around here. Came to check it out.#$b#You wanna join me?\"/pause 700/end"
+                "20020614/t 600 1500/w sunny": "continue/25 37/farmer 23 48 1 Brennan 27 37 0/move farmer 0 -11 1 false/pause 1000/speak Brennan \"Hi there. Never seen you around here before.\"/pause 1000/speak Brennan \"Name's Brennan. I'm a wizard... or an apprentice one at least.$s#$b#What's your name?\"/pause 1000/speak Brennan \"@ huh? Cool.\"/pause 1200/speak Brennan \"I heard some reports that there was a ghost sighting around here. Came to check it out.#$b#You wanna join me?\"/pause 700/move Brennan -2 0 0 false/move Brennan 0 -10 0 false/playSound doorClose/pause 200/warp Brennan 0 0/pause 500/end"
             }//e <100162>/e <20020615>
         },
         {
