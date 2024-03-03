@@ -1,10 +1,10 @@
 {
 
-  "Name": "NPC Test",
-   "Author": "PapaChipMan",
+  "Name": "UncannyValleyNPCTest",
+   "Author": "UncannyValley",
    "Description": "Testing a custom NPC",
    "Version": "1.0.0",
-   "UniqueID": "PapaChipMan.NPCTest",
+   "UniqueID": "UncannyValley.UncannyValleyNPCTest",
    "ContentPackFor": {
        "UniqueID": "Pathoschild.ContentPatcher"
     },

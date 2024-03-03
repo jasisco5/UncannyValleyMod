@@ -1,9 +1,9 @@
 {
-    "Name": "Uncanny Valley Test Quest",
-    "Author": "Jacob Sisco",
+    "Name": "UncannyValleyTestQuest",
+    "Author": "UncannyValley",
     "Version": "1.0.0",
-    "Description": "Uncanny Valley Quest",
-    "UniqueID": "JacobSisco.UncannyValleyQuest",
+    "Description": "Uncanny Valley Quests",
+    "UniqueID": "UncannyValley.UncannyValleyQuest",
     "MinimumApiVersion": "3.6.0",
     "UpdateKeys": [],
     "ContentPackFor": {
