@@ -12,6 +12,7 @@ using StardewValley.Tools;
 using StardewValley.TerrainFeatures;
 using QuestFramework.Api;
 using ContentPatcher;
+using SpaceShared.APIs;
 
 namespace UncannyValleyMod
 {
@@ -20,6 +21,7 @@ namespace UncannyValleyMod
     {
         // Variables
         IContentPatcherAPI cpApi;
+        SpaceCore.Api scApi;
         IManagedQuestApi qfManagedApi;
         IQuestApi qfApi;
         IModHelper helper;
@@ -65,6 +67,10 @@ namespace UncannyValleyMod
         /// </summary>
         public void OnGameLaunched(object sender, GameLaunchedEventArgs e)
         {
+            // Reference to Space Core
+            scApi = new SpaceCore.Api();
+            scApi.RegisterSerializerType(typeof(ReapingEnchantment));
+
             // Reference to Content Patcher
             cpApi = this.Helper.ModRegistry.GetApi<ContentPatcher.IContentPatcherAPI>("Pathoschild.ContentPatcher");
 
