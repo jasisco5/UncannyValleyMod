@@ -178,7 +178,7 @@ namespace UncannyValleyMod
             saveModel = this.Helper.Data.ReadSaveData<ModSaveData>("savedata");
             if(saveModel == null)
             {
-                // create empty entry
+                // create default entry
                 this.Helper.Data.WriteSaveData<ModSaveData>("savedata", new ModSaveData());
                 saveModel = this.Helper.Data.ReadSaveData<ModSaveData>("savedata");
             }
