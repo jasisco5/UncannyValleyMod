@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Xml.Serialization;
 using Microsoft.Xna.Framework;
 using StardewValley;
 using StardewValley.Monsters;
 
 namespace UncannyValleyMod
 {
+    [XmlType("Mods_UncannyValley_Reaping")]
     public class ReapingEnchantment : BaseWeaponEnchantment
     {
         protected override void _OnDealDamage(Monster monster, GameLocation location, Farmer who, ref int amount)

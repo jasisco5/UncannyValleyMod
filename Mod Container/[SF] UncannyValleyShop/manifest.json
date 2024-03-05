@@ -11,7 +11,7 @@
 	},
 	"Dependencies": [
 		{
-			"UniqueID": "JacobSisco.UncannyValleyMod",
+			"UniqueID": "UncannyValley.UncannyValleyMod",
 			"MinimumVersion": "0.0.1"
 		}
 	]
