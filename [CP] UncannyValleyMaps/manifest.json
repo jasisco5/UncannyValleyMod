@@ -1,11 +1,17 @@
 {
-    "Name": "UncannyValleyMaps",
-    "Author": "UncannyValley",
-    "Version": "1.0.0",
-    "Description": "Custom maps for our mod, this includes pelican town, mansion exterior and interior",
-    "UniqueID": "UncannyValley.UncannyValleyMaps",
-    "UpdateKeys": [],
-    "ContentPackFor": {
-        "UniqueID": "Pathoschild.ContentPatcher"
+  "Name": "UncannyValleyMaps",
+  "Author": "UncannyValley",
+  "Version": "1.0.0",
+  "Description": "Custom maps for our mod, this includes pelican town, mansion exterior and interior",
+  "UniqueID": "UncannyValley.UncannyValleyMaps",
+  "UpdateKeys": [],
+  "ContentPackFor": {
+    "UniqueID": "Pathoschild.ContentPatcher"
+  },
+  "Dependencies": [
+    {
+      "UniqueID": "UncannyValley.UncannyValleyMod",
+      "MinimumVersion": "0.0.1"
     }
+  ]
 }

@@ -1,5 +1,12 @@
 {
     "Format": "1.29.0",
+
+    "DynamicTokens": [
+      {
+        "Name": "WeaponObtained",
+        "Value": "{{UncannyValley.UncannyValleyMod/WeaponObtained}}"
+      }
+    ],
  
     "CustomLocations": [
        // add the in-game location
@@ -44,9 +51,9 @@
                }
             }
          ],
-         "When": {
-            "PlayerGender": "Male"
-         }
+        "When": {
+          "Query: '{{WeaponObtained}}' = 'true'": true
+        }
       }
 
    ]

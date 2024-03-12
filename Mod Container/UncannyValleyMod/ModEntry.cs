@@ -89,23 +89,6 @@ namespace UncannyValleyMod
             // Working with Content Patcher
             AddTokens();
             {
-                ///
-                /// Adding a token to Content Patcher api
-                /// 
-                // To use it in a Content Pack, list this mod as a dependency 
-                //cpApi.RegisterToken(this.ModManifest, "PlayerName", () =>
-                //{
-                //    // save is loaded
-                //    if (Context.IsWorldReady)
-                //        return new[] { Game1.player.Name };
-                //
-                //    // or save is currently loading
-                //    if (SaveGame.loaded?.player != null)
-                //        return new[] { SaveGame.loaded.player.Name };
-                //
-                //    // no save loaded (e.g. on the title screen)
-                //    return null;
-                //});
 
                 ///
                 /// Loading owned Content Packs
@@ -183,6 +166,8 @@ namespace UncannyValleyMod
                 saveModel = this.Helper.Data.ReadSaveData<ModSaveData>("savedata");
             }
             modWeapon.saveModel = saveModel;
+
+            this.Monitor.Log($"{saveModel.weaponObtained.ToString()}", LogLevel.Debug);
         }
 
         /// <summary>Raised after the player presses a button on the keyboard, controller, or mouse.</summary>
@@ -216,25 +201,23 @@ namespace UncannyValleyMod
                 return;
             }
             // Player is Outside the Mansion
-            if (Game1.getLocationFromName("Custom_Mansion") == e.NewLocation)
+            if (Game1.getLocationFromName("Custom_Mansion_Exterior") == e.NewLocation)
             {
                 this.Monitor.Log($"{e.Player.Name} is outside the mansion", LogLevel.Debug);
-                // Spawn a Journal Scrap
-                if (Game1.getLocationFromName("Custom_Mansion")
-                    .dropObject(new StardewValley.Object(new Vector2(12 * 64, 48 * 64), 842, "Journal Scrap", true, true, false, true))
-                    ) { }
+                // Start Raining
+                Game1.isRaining = true;
+                Game1.isDebrisWeather = true;
 
                 return;
             }
-            // Player is leaving the farm
-            if (Game1.getLocationFromName("Farm") == e.OldLocation)
+            // Player is leaving the mansino exterior
+            if (Game1.getLocationFromName("Custom_Mansion_Exterior") == e.OldLocation)
             {
-                Game1.isRaining = true;
-                Game1.isDebrisWeather = true;
-            }
-            if (Game1.getLocationFromName("Farm") == e.NewLocation)
-            {
+                this.Monitor.Log($"{e.Player.Name} is leaving the mansion", LogLevel.Debug);
+                // Stop Raining
                 Game1.isRaining = false;
+
+                return;
             }
 
 
@@ -245,19 +228,33 @@ namespace UncannyValleyMod
         // Content Patcher Tokens
         private void AddTokens()
         {
+
             ///
             /// Adding a token to Content Patcher api
             /// 
             // To use it in a Content Pack, list this mod as a dependency 
-            cpApi.RegisterToken(this.ModManifest, "PlayerName", () =>
+            //cpApi.RegisterToken(this.ModManifest, "PlayerName", () =>
+            //{
+            //    // save is loaded
+            //    if (Context.IsWorldReady)
+            //        return new[] { Game1.player.Name };
+            //
+            //    // or save is currently loading
+            //    if (SaveGame.loaded?.player != null)
+            //        return new[] { SaveGame.loaded.player.Name };
+            //
+            //    // no save loaded (e.g. on the title screen)
+            //    return null;
+            //});
+            cpApi.RegisterToken(this.ModManifest, "WeaponObtained", () =>
             {
                 // save is loaded
                 if (Context.IsWorldReady)
-                    return new[] { Game1.player.Name };
+                    return new[] { saveModel.weaponObtained.ToString() };
 
                 // or save is currently loading
                 if (SaveGame.loaded?.player != null)
-                    return new[] { SaveGame.loaded.player.Name };
+                    return null;
 
                 // no save loaded (e.g. on the title screen)
                 return null;
