@@ -26,6 +26,7 @@ namespace UncannyValleyMod
         IQuestApi qfApi;
         IModHelper helper;
         ModSaveData saveModel;
+        Dictionary<string, Token> tokens = new Dictionary<string, Token>();
 
         // Other File References
         ModMail modMail;
@@ -155,7 +156,7 @@ namespace UncannyValleyMod
             Game1.locations.Add(customMap);*/
 
             // Cutom Mail
-            Game1.player.mailbox.Add("MyModMail1");
+            //Game1.player.mailbox.Add("MyModMail1");
 
             // Custom Save Data
             saveModel = this.Helper.Data.ReadSaveData<ModSaveData>("savedata");
@@ -166,6 +167,12 @@ namespace UncannyValleyMod
                 saveModel = this.Helper.Data.ReadSaveData<ModSaveData>("savedata");
             }
             modWeapon.saveModel = saveModel;
+
+            foreach( KeyValuePair<string, Token> entry in tokens ) 
+            {
+                entry.Value.saveModel = saveModel;
+                entry.Value.UpdateContext();
+            }
 
             this.Monitor.Log($"{saveModel.weaponObtained.ToString()}", LogLevel.Debug);
         }
@@ -208,6 +215,16 @@ namespace UncannyValleyMod
                 Game1.isRaining = true;
                 Game1.isDebrisWeather = true;
 
+                // Door warp
+                //if (saveModel.weaponObtained)
+                //{
+                //    Warp mansionDoor = new Warp(25, 26, "Custom_Mansion_Interior", 44, 47, false);
+                //    e.NewLocation.warps.Add(mansionDoor);
+                //}
+                   
+                
+
+
                 return;
             }
             // Player is leaving the mansino exterior
@@ -233,33 +250,22 @@ namespace UncannyValleyMod
             /// Adding a token to Content Patcher api
             /// 
             // To use it in a Content Pack, list this mod as a dependency 
-            //cpApi.RegisterToken(this.ModManifest, "PlayerName", () =>
-            //{
-            //    // save is loaded
-            //    if (Context.IsWorldReady)
-            //        return new[] { Game1.player.Name };
-            //
-            //    // or save is currently loading
-            //    if (SaveGame.loaded?.player != null)
-            //        return new[] { SaveGame.loaded.player.Name };
-            //
-            //    // no save loaded (e.g. on the title screen)
-            //    return null;
-            //});
-            cpApi.RegisterToken(this.ModManifest, "WeaponObtained", () =>
+            cpApi.RegisterToken(this.ModManifest, "PlayerName", () =>
             {
                 // save is loaded
                 if (Context.IsWorldReady)
-                    return new[] { saveModel.weaponObtained.ToString() };
-
+                    return new[] { Game1.player.Name };
+            
                 // or save is currently loading
                 if (SaveGame.loaded?.player != null)
-                    return null;
-
+                    return new[] { SaveGame.loaded.player.Name };
+            
                 // no save loaded (e.g. on the title screen)
                 return null;
             });
-
+            if (!tokens.ContainsKey("Weapon")) { tokens.Add("Weapon", new WeaponToken());  }
+            modWeapon.token = (WeaponToken)tokens["Weapon"];
+            cpApi.RegisterToken(this.ModManifest, "WeaponObtained", tokens["Weapon"]);
 
         }
     }

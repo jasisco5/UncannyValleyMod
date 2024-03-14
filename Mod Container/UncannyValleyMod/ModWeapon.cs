@@ -18,6 +18,7 @@ namespace UncannyValleyMod
     internal class ModWeapon
     {
         public ModSaveData saveModel { get; set; }
+        public WeaponToken token { get; set; }
 
         public ModWeapon(IModHelper helper)
         {
@@ -54,6 +55,7 @@ namespace UncannyValleyMod
             weapon.ParentSheetIndex = 65;
             Game1.player.addItemToInventory(weapon);
             saveModel.weaponObtained = true;
+            if (token != null) { token.UpdateContext(); }
         }
 
     }
