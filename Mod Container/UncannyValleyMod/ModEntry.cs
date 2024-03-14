@@ -31,6 +31,7 @@ namespace UncannyValleyMod
         // Other File References
         ModMail modMail;
         ModWeapon modWeapon;
+        ModMaps modMaps;
 
         /*********
         ** Public methods
@@ -43,6 +44,7 @@ namespace UncannyValleyMod
             // Get C# modded content
             modMail = new ModMail(helper);
             modWeapon = new ModWeapon(helper);
+            modMaps = new ModMaps(helper, this.Monitor, modWeapon);
 
             // Set Up Events
             helper.Events.Input.ButtonPressed += this.OnButtonPressed;
@@ -71,7 +73,6 @@ namespace UncannyValleyMod
             // Reference to Space Core
             scApi = new SpaceCore.Api();
             scApi.RegisterSerializerType(typeof(ReapingEnchantment));
-
             // Reference to Content Patcher
             cpApi = this.Helper.ModRegistry.GetApi<ContentPatcher.IContentPatcherAPI>("Pathoschild.ContentPatcher");
 
@@ -115,6 +116,9 @@ namespace UncannyValleyMod
 
 
         }
+
+        
+
         private void OnSaving(object sender, SavingEventArgs e)
         {
             this.helper.Data.WriteSaveData("savedata", saveModel);
@@ -146,15 +150,6 @@ namespace UncannyValleyMod
                 // Conditions don't update automatically
                 conditions.UpdateContext();
             }
-
-            /*
-            // Load Custom_Mansion
-            // get the internal asset key for the map file
-            string mapAssetKey = this.Helper.Content.GetActualAssetKey("assets/maps/CustomMansion.tmx", ContentSource.ModFolder);
-            // add the location
-            GameLocation customMap = new GameLocation(mapAssetKey, "Custom_Mansion") { IsOutdoors = true, IsFarm = false };
-            Game1.locations.Add(customMap);*/
-
             // Cutom Mail
             //Game1.player.mailbox.Add("MyModMail1");
 
@@ -166,6 +161,7 @@ namespace UncannyValleyMod
                 this.Helper.Data.WriteSaveData<ModSaveData>("savedata", new ModSaveData());
                 saveModel = this.Helper.Data.ReadSaveData<ModSaveData>("savedata");
             }
+            modMaps.SetSaveModel(saveModel);
             modWeapon.saveModel = saveModel;
 
             foreach( KeyValuePair<string, Token> entry in tokens ) 
@@ -174,7 +170,6 @@ namespace UncannyValleyMod
                 entry.Value.UpdateContext();
             }
 
-            this.Monitor.Log($"{saveModel.weaponObtained.ToString()}", LogLevel.Debug);
         }
 
         /// <summary>Raised after the player presses a button on the keyboard, controller, or mouse.</summary>
@@ -189,55 +184,10 @@ namespace UncannyValleyMod
             // print button presses to the console window
             //this.Monitor.Log($"{Game1.player.Name} pressed {e.Button}.", LogLevel.Debug);
         }
+
         private void OnWarped(object sender, WarpedEventArgs e)
         {
             this.Monitor.Log($"{e.Player.Name} warped from {e.OldLocation} to {e.NewLocation}", LogLevel.Debug);
-            // Player is in the FarmHouse
-            if (Game1.getLocationFromName("FarmHouse") == e.NewLocation)
-            {
-                this.Monitor.Log($"{e.Player.Name} is in FarmHouse", LogLevel.Debug);
-                // Spawn a Journal Scrap
-                if (saveModel.canSpawnNote)
-                {
-                    Game1.getLocationFromName("FarmHouse")
-                     .dropObject(new StardewValley.Object(new Vector2(6 * 64, 8 * 64),
-                     842, "Journal Scrap", true, true, false, true));
-                    saveModel.canSpawnNote = false;
-                }
-                if (!saveModel.weaponObtained) { modWeapon.AddWeaponToInv(); }
-                return;
-            }
-            // Player is Outside the Mansion
-            if (Game1.getLocationFromName("Custom_Mansion_Exterior") == e.NewLocation)
-            {
-                this.Monitor.Log($"{e.Player.Name} is outside the mansion", LogLevel.Debug);
-                // Start Raining
-                Game1.isRaining = true;
-                Game1.isDebrisWeather = true;
-
-                // Door warp
-                //if (saveModel.weaponObtained)
-                //{
-                //    Warp mansionDoor = new Warp(25, 26, "Custom_Mansion_Interior", 44, 47, false);
-                //    e.NewLocation.warps.Add(mansionDoor);
-                //}
-                   
-                
-
-
-                return;
-            }
-            // Player is leaving the mansino exterior
-            if (Game1.getLocationFromName("Custom_Mansion_Exterior") == e.OldLocation)
-            {
-                this.Monitor.Log($"{e.Player.Name} is leaving the mansion", LogLevel.Debug);
-                // Stop Raining
-                Game1.isRaining = false;
-
-                return;
-            }
-
-
         }
 
 
@@ -266,6 +216,9 @@ namespace UncannyValleyMod
             if (!tokens.ContainsKey("Weapon")) { tokens.Add("Weapon", new WeaponToken());  }
             modWeapon.token = (WeaponToken)tokens["Weapon"];
             cpApi.RegisterToken(this.ModManifest, "WeaponObtained", tokens["Weapon"]);
+
+
+            modMaps.tokens = tokens;
 
         }
     }

@@ -2,8 +2,10 @@
 using StardewValley;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace UncannyValleyMod
@@ -15,7 +17,7 @@ namespace UncannyValleyMod
          ** Fields
          *********/
         /// <summary>The state as of the last context update.</summary>
-        bool weaponObtained;
+        public bool weaponObtained;
 
         /****
         ** Metadata
@@ -51,7 +53,7 @@ namespace UncannyValleyMod
             if(saveModel != null)
             {
                 bool oldState = this.weaponObtained;
-                this.weaponObtained = saveModel.weaponObtained; 
+                this.weaponObtained = saveModel.weaponObtained;
                 return this.weaponObtained != oldState;
             }
             else { return false; }
@@ -67,7 +69,7 @@ namespace UncannyValleyMod
         /// <param name="input">The input arguments, if applicable.</param>
         public IEnumerable<string> GetValues(string input = null)
         {
-            yield return this.weaponObtained.ToString();
+            yield return this.weaponObtained.ToString().ToLower();
         }
     }
 }

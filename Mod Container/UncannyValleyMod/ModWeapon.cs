@@ -20,9 +20,12 @@ namespace UncannyValleyMod
         public ModSaveData saveModel { get; set; }
         public WeaponToken token { get; set; }
 
+        IModHelper helper;
+
         public ModWeapon(IModHelper helper)
         {
             helper.Events.Content.AssetRequested += this.OnAssetRequested;
+            this.helper = helper;
         }
 
         /// <summary>
@@ -55,7 +58,13 @@ namespace UncannyValleyMod
             weapon.ParentSheetIndex = 65;
             Game1.player.addItemToInventory(weapon);
             saveModel.weaponObtained = true;
-            if (token != null) { token.UpdateContext(); }
+            // If the state has changed, update the token and reload the map
+            if (token != null && !token.weaponObtained)
+            {
+                token.UpdateContext();
+                // Attempt to force reload the maps content patch
+                //helper.GameContent.InvalidateCache("Maps/Custom_Mansion_Exterior");
+            }
         }
 
     }
