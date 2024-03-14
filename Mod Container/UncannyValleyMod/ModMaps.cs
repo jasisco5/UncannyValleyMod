@@ -77,8 +77,10 @@ namespace UncannyValleyMod
                 // Door warp
                 if (!oldSaveModel.weaponObtained && saveModel.weaponObtained)
                 {
-                    Warp mansionDoor = new Warp(25, 26, "Custom_Mansion_Interior", 44, 47, false);
-                    e.NewLocation.warps.Add(mansionDoor);
+                    // Bit of a dirty check, could probably be done OnAssetRequested
+                    e.NewLocation.setTileProperty(25, 26, "Buildings", "Action", "Warp 44 47 Custom_Mansion_Interior");
+                    //Warp mansionDoor = new Warp(25, 26, "Custom_Mansion_Interior", 44, 47, false);
+                    //e.NewLocation.warps.Add(mansionDoor);
                 }
 
                 return;
