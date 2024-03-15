@@ -29,7 +29,6 @@ namespace UncannyValleyMod
         Dictionary<string, Token> tokens = new Dictionary<string, Token>();
 
         // Other File References
-        ModMail modMail;
         ModWeapon modWeapon;
         ModMaps modMaps;
 
@@ -41,11 +40,6 @@ namespace UncannyValleyMod
         public override void Entry(IModHelper helper)
         {
             this.helper = helper;
-            // Get C# modded content
-            modMail = new ModMail(helper);
-            modWeapon = new ModWeapon(helper);
-            modMaps = new ModMaps(helper, this.Monitor, modWeapon);
-
             // Set Up Events
             helper.Events.Input.ButtonPressed += this.OnButtonPressed;
 
@@ -56,6 +50,10 @@ namespace UncannyValleyMod
             helper.Events.GameLoop.SaveLoaded += this.OnSaveLoaded;
 
             helper.Events.GameLoop.Saving += this.OnSaving;
+
+            // Get C# modded content
+            modWeapon = new ModWeapon(helper);
+            modMaps = new ModMaps(helper, this.Monitor, modWeapon);
         }
 
 
@@ -150,8 +148,6 @@ namespace UncannyValleyMod
                 // Conditions don't update automatically
                 conditions.UpdateContext();
             }
-            // Cutom Mail
-            //Game1.player.mailbox.Add("MyModMail1");
 
             // Custom Save Data
             saveModel = this.Helper.Data.ReadSaveData<ModSaveData>("savedata");
