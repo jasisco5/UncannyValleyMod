@@ -1,0 +1,11 @@
+{
+	"Name": "UncannyValleyPotions",
+	"Author": "UncannyValley",
+	"Version": "1.0.0",
+	"Description": "UncannyValley's Potions",
+	"UniqueID": "UncannyValley.UncannyValleyPotions",
+	"UpdateKeys": [],
+	"ContentPackFor": {
+		"UniqueID": "spacechase0.JsonAssets",
+	},
+}
