@@ -84,6 +84,8 @@
    </animation>
   </tile>
  </tileset>
+ <tileset firstgid="4517" source="zmansion.tsx"/>
+ <tileset firstgid="10789" source="z_basement.tsx"/>
  <layer id="1" name="Back" width="46" height="25">
   <data encoding="csv">
 636,636,636,636,636,636,636,636,636,636,636,636,636,636,636,636,636,636,636,636,636,636,636,636,636,636,636,636,636,636,636,636,636,636,636,636,636,636,636,636,636,636,636,636,636,636,
