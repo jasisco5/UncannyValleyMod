@@ -11,6 +11,10 @@
        {
          "Name": "Custom_Mansion_Interior",
          "FromMapFile": "assets/CustomMansion.tmx"
+       },
+       {
+         "Name": "Custom_Mansion_Basement",
+         "FromMapFile":"assets/CustomMansionBasement.tmx"
        }
     ],
 
@@ -47,6 +51,20 @@
         "When": {
           "Query: '{{UncannyValley.UncannyValleyMod/WeaponObtained}}' = 'true'": true
         }
+      },
+      {
+         // try adding a conditional warp
+         "Action": "EditMap",
+         "Target": "Maps/Custom_Mansion_Interior",
+         "MapTiles": [
+            {
+               "Position": {"X": 54, "Y": 24},
+               "Layer": "Buildings",
+               "SetProperties": {
+                  "Action": "Warp 22 3 Custom_Mansion_Basement"
+               }
+            }
+         ]
       }
 
    ]
