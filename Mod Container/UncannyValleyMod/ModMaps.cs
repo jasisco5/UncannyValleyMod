@@ -85,9 +85,9 @@ namespace UncannyValleyMod
                 // Spawn a Journal Scrap
                 if (saveModel.canSpawnNote)
                 {
-                    Game1.getLocationFromName("FarmHouse")
-                     .dropObject(new StardewValley.Object(new Vector2(6 * 64, 8 * 64),
-                     842, "Journal Scrap", true, true, false, true));
+                    //Game1.getLocationFromName("FarmHouse")
+                     //.dropObject(new StardewValley.Object(new Vector2(6 * 64, 8 * 64),
+                     //842, "Journal Scrap", true, true, false, true));
                     saveModel.canSpawnNote = false;
                 }
                 if (!saveModel.weaponObtained) { modWeapon.AddWeaponToInv(); }

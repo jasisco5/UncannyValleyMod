@@ -1,7 +1,7 @@
 {
   "Name": "UncannyValleyMod",
   "Author": "UncannyValley",
-  "Version": "1.0.0",
+  "Version": "1.0.1",
   "Description": "Horror mod for Stardew Valley",
   "UniqueID": "UncannyValley.UncannyValleyMod",
   "EntryDll": "UncannyValleyMod.dll",
@@ -11,14 +11,6 @@
     {
       "UniqueID": "Pathoschild.ContentPatcher",
       "MinimumVersion": "1.30.0"
-    },
-    {
-      "UniqueID": "Purrplingcat.QuestFramework",
-      "MinimumVersion": "1.4.0"
-    },
-    {
-      "UniqueID": "Purrplingcat.QuestEssentials",
-      "MinimumVersion": "1.0.0"
     }
   ]
 }

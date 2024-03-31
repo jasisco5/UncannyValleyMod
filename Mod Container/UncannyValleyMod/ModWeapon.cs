@@ -8,6 +8,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using StardewValley.Enchantments;
+using StardewValley.GameData.Weapons;
+using StardewValley.ItemTypeDefinitions;
 
 namespace UncannyValleyMod
 {
@@ -43,8 +46,18 @@ namespace UncannyValleyMod
             {
                 e.Edit(asset =>
                 {
-                    var data = asset.AsDictionary<int, string>().Data;
-                    data[65] = "Spectral Sabre/A blade to reap the life and energy from monsters./80/100/1/8/0/0/3/5/5/0/.04/2";
+                    var data = asset.AsDictionary<string, WeaponData>().Data;
+                    WeaponData weaponData = new WeaponData();
+                    weaponData.Name = "Spectral Sabre";
+                    weaponData.DisplayName = "Spectral Sabre";
+                    weaponData.Description = "A blade to reap the life and energy from monsters.";
+                    weaponData.MinDamage = 40;
+                    weaponData.MaxDamage = 60;
+                    weaponData.Type = 3;
+                    weaponData.Texture = "Tilesheets/weapons";
+                    weaponData.SpriteIndex = 67;
+
+                    data["67"] = weaponData;
 
                 }, AssetEditPriority.Default);
             }
@@ -52,7 +65,7 @@ namespace UncannyValleyMod
 
         public void AddWeaponToInv()
         {
-            MeleeWeapon weapon = new MeleeWeapon(65);
+            MeleeWeapon weapon = new MeleeWeapon("67");
             BaseWeaponEnchantment reaping = new ReapingEnchantment();
             weapon.AddEnchantment(reaping);
             weapon.ParentSheetIndex = 65;
