@@ -39,7 +39,7 @@ namespace UncannyValleyMod
             helper.Events.Player.Warped += this.OnWarped;
             if (!USEPATCHER)
             {
-                helper.Events.Content.AssetRequested += this.OnAssetRequested;
+                //helper.Events.Content.AssetRequested += this.OnAssetRequested;
                 helper.Events.GameLoop.SaveLoaded += this.OnSaveLoaded;
             }
         }
@@ -83,6 +83,7 @@ namespace UncannyValleyMod
             {
                 this.Monitor.Log($"{e.Player.Name} is in FarmHouse", LogLevel.Debug);
                 // Spawn a Journal Scrap
+
                 if (saveModel.canSpawnNote)
                 {
                     //Game1.getLocationFromName("FarmHouse")
@@ -90,6 +91,7 @@ namespace UncannyValleyMod
                      //842, "Journal Scrap", true, true, false, true));
                     saveModel.canSpawnNote = false;
                 }
+
                 if (!saveModel.weaponObtained) { modWeapon.AddWeaponToInv(); }
                 return;
             }

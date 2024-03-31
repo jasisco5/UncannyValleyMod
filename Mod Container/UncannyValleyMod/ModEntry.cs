@@ -10,7 +10,6 @@ using StardewValley;
 using StardewValley.Menus;
 using StardewValley.Tools;
 using StardewValley.TerrainFeatures;
-// using QuestFramework.Api;
 using ContentPatcher;
 using SpaceShared.APIs;
 using Microsoft.Xna.Framework.Audio;
@@ -23,8 +22,6 @@ namespace UncannyValleyMod
         // Variables
         IContentPatcherAPI cpApi;
         SpaceCore.Api scApi;
-        //IManagedQuestApi qfManagedApi;
-        //IQuestApi qfApi;
         IModHelper helper;
         ModSaveData saveModel;
         Dictionary<string, Token> tokens = new Dictionary<string, Token>();
@@ -88,6 +85,7 @@ namespace UncannyValleyMod
                     //qfManagedApi.RegisterQuest( enter quest definition here );
                 };
             }*/
+
 
 
             // Working with Content Patcher

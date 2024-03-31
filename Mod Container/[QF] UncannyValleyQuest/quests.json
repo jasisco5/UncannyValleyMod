@@ -1,56 +1,127 @@
 {
-    "Format": "1.0",
-    "Quests": [
+  "Format": "1.0",
+  "Quests": [
+    {
+      "Name": "parrot_perch",
+      "Type": "ItemDelivery",
+      "Title": "Parrot Perch",
+      "Description": "I want to feed my bird friends. Please bring me a parsnip seed.",
+      "Objective": "Bring seed to Lewis",
+      "DaysLeft": 5,
+      "Reward": 60,
+      "RewardType": "Money",
+      "Cancelable": true,
+      "Trigger": "Lewis 771",
+      "ReactionText": "This is perfect, @! The birds will love it.",
+      "FriendshipGain": {
+        "Emily": 100
+      }
+    },
+    {
+      "Name": "pet_rock",
+      "Type": "ItemDelivery",
+      "Title": "Pet Rock",
+      "Description": "I need a very low-maintenance pet. I want someone to bring me a Stone to care for. Pierre.",
+      "Objective": "Bring stone to Pierre",
+      "RewardType": "Object",
+      "Reward": "Parsnip",
+      "RewardAmount": 1,
+      "Cancelable": true,
+      "Trigger": "Pierre 771",
+      "ReactionText": "Thanks @, this one even looks like me!"
+    },
+    {
+      "Name": "Act_1",
+      "Type": "Location",
+      "Title": "A strange place",
+      "Description": "Vincent saw something strange around the blacksmith. Help Jodi and investigate.",
+      "Objective": "Investigate around the blacksmith",
+      "Trigger": "Custom_Mansion_Exterior",
+      //"NextQuests": [ "Act_2" ],
+      "Reward": 0,
+      "RewardAmount": 0,
+      "RewardDescription": "",
+      "Cancelable": false,
+      "ConversationTopic": null,
+      "Colors": {
+        "TitleColor": 0,
+        "TextColor": 0,
+        "ObjectiveColor": 2
+      }
+    },
+    {
+      "Name": "Act_2",
+      "Type": "PurrplingCat.QuestEssentials/Adventure",
+      "Title": "Explore the Mansion",
+      "Description": "Get to the bottom of what's going on in this mansion.'",
+      //"Objective": "Investigate around the blacksmith",
+      "NextQuests": [ "Act_2" ],
+      //"Reward": 0,
+      //"RewardAmount": 0,
+      //"RewardDescription": "",
+      "Cancelable": false,
+      "ConversationTopic": null,
+      "Colors": {
+        "TitleColor": 0,
+        "TextColor": 0,
+        "ObjectiveColor": 2
+      },
+      "Tasks": [
         {
-            "Name": "parrot_perch",
-            "Type": "ItemDelivery",
-            "Title": "Parrot Perch",
-            "Description": "I want to feed my bird friends. Please bring me a parsnip seed.",
-            "Objective": "Bring seed to Lewis",
-            "DaysLeft": 5,
-            "Reward": 60,
-            "RewardType": "Money",
-            "Cancelable": true,
-            "Trigger": "Lewis 771",
-            "ReactionText": "This is perfect, @! The birds will love it.",
-            "FriendshipGain": {
-                "Emily": 100
-            }
+          "Name": "Talk_Butler_1",
+          "Type": "Talk",
+          "Description": "Talk with the man in the mansion.",
+          "Data": {
+            // Talk to abby and then see an event
+            "NpcName": "Brennan",
+            "DialogueText": "Progress Act_2 Quest "
+            //"StartEvent": "44017601 Data\\Events\\FarmHouse:3917601/f Emily 3500/O Emily/n emilyFiber/A emilyFiber/t 2000 2400/p Emily",
+            //"ReceiveItems": "object_ancient_fruit" // And get ancient fruit from Abby when talk
+          }
         },
         {
-            "Name": "pet_rock",
-            "Type": "ItemDelivery",
-            "Title": "Pet Rock",
-            "Description": "I need a very low-maintenance pet. I want someone to bring me a Stone to care for. Pierre.",
-            "Objective": "Bring stone to Pierre",
-            "RewardType": "Object",
-            "Reward": "Parsnip",
-            "RewardAmount": 1,
-            "Cancelable": true,
-            "Trigger": "Pierre 771",
-            "ReactionText": "Thanks @, this one even looks like me!"
+          "Name": "Enter_Mansion",
+          "Type": "EnterSpot",
+          "Description": "Follow the apprentice into the mansion",
+          "Data": {
+            "Tile": "44,47",
+            "Location": "Custom_Mansion_Interior"
+          },
+          "RequiredTasks": [ "Find_Mansion" ]
         }
-    ],
-    "Offers": [
-        {
-            "QuestName": "parrot_perch",
-            "OfferedBy": "Bulletinboard",
-            "When": {
-                "DaysOfWeek": "Monday Thursday Friday",
-                "Seasons": "spring fall"
-            }
-        },
-        {
-            "QuestName": "pet_rock",
-            "OfferedBy": "Mail",
-            "OfferDetails": {
-                "Topic": "A request from Pierre",
-                "Text": "Dear @,^ I need a very low-maintenance pet. I want someone to bring me a Stone to care for.^Pierre."
-            },
-            "When": {
-                "DaysOfWeek": "Monday",
-                "Seasons": "spring"
-            }
-        }
-    ]
+      ]
+    }
+
+  ],
+  "Offers": [
+    {
+      "QuestName": "parrot_perch",
+      "OfferedBy": "Bulletinboard",
+      "When": {
+        "DaysOfWeek": "Monday Thursday Friday",
+        "Seasons": "spring fall"
+      }
+    },
+    {
+      "QuestName": "pet_rock",
+      "OfferedBy": "Mail",
+      "OfferDetails": {
+        "Topic": "A request from Pierre",
+        "Text": "Dear @,^ I need a very low-maintenance pet. I want someone to bring me a Stone to care for.^Pierre."
+      },
+      "When": {
+        "DaysOfWeek": "Monday",
+        "Seasons": "spring"
+      }
+    },
+    {
+      "QuestName": "Act_1",
+      "OfferedBy": "Bulletinboard",
+      "When": {
+        "DaysOfWeek": "Monday Thursday Friday",
+        "Seasons": "spring fall"
+      }
+    }
+
+  ]
 }
