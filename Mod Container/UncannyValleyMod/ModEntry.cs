@@ -10,7 +10,6 @@ using StardewValley;
 using StardewValley.Menus;
 using StardewValley.Tools;
 using StardewValley.TerrainFeatures;
-using QuestFramework.Api;
 using ContentPatcher;
 using SpaceShared.APIs;
 
@@ -22,8 +21,6 @@ namespace UncannyValleyMod
         // Variables
         IContentPatcherAPI cpApi;
         SpaceCore.Api scApi;
-        IManagedQuestApi qfManagedApi;
-        IQuestApi qfApi;
         IModHelper helper;
         ModSaveData saveModel;
         Dictionary<string, Token> tokens = new Dictionary<string, Token>();
@@ -73,17 +70,6 @@ namespace UncannyValleyMod
             scApi.RegisterSerializerType(typeof(ReapingEnchantment));
             // Reference to Content Patcher
             cpApi = this.Helper.ModRegistry.GetApi<ContentPatcher.IContentPatcherAPI>("Pathoschild.ContentPatcher");
-
-            // Working with Quest Framework
-            {
-                qfApi = this.Helper.ModRegistry.GetApi<IQuestApi>("PurrplingCat.QuestFramework");
-                //IQuestApi qfApi = this.Helper.ModRegistry.GetApi<IQuestApi>("PurrplingCat.QuestEssentials");
-                qfManagedApi = qfApi.GetManagedApi(this.ModManifest);
-
-                qfApi.Events.GettingReady += (_sender, _e) => {
-                    //qfManagedApi.RegisterQuest(/* enter quest definition here */);
-                };
-            }
 
 
             // Working with Content Patcher

@@ -11,14 +11,6 @@
     {
       "UniqueID": "Pathoschild.ContentPatcher",
       "MinimumVersion": "1.30.0"
-    },
-    {
-      "UniqueID": "Purrplingcat.QuestFramework",
-      "MinimumVersion": "1.4.0"
-    },
-    {
-      "UniqueID": "Purrplingcat.QuestEssentials",
-      "MinimumVersion": "1.0.0"
     }
   ]
 }

@@ -49,45 +49,48 @@
         "ObjectiveColor": 2
       }
     },
-    //{
-    //  "Name": "Example_Adventure",
-    //  "Type": "PurrplingCat.QuestEssentials/Adventure",
-    //  "Title": "A strange place",
-    //  "Description": "Follow Jodi's request to investigate the around the blacksmith.",
-    //  //"Objective": "Investigate around the blacksmith",
-    //  "NextQuests": [ "Act_2" ],
-    //  //"Reward": 0,
-    //  //"RewardAmount": 0,
-    //  //"RewardDescription": "",
-    //  "Cancelable": false,
-    //  "ConversationTopic": null,
-    //  "Colors": {
-    //    "TitleColor": 0,
-    //    "TextColor": 0,
-    //    "ObjectiveColor": 2
-    //  },
-    //  "Tasks": [
-    //    {
-    //      "Name": "Find_Mansion",
-    //      "Type": "EnterSpot",
-    //      "Description": "Investigate around the blacksmith",
-    //      "Data": {
-    //        "Area": "0,46,5,5",
-    //        "Location": "Custom_Mansion_Exterior"
-    //      }
-    //    },
-    //    {
-    //      "Name": "Enter_Mansion",
-    //      "Type": "EnterSpot",
-    //      "Description": "Follow the apprentice into the mansion",
-    //      "Data": {
-    //        "Tile": "44,47",
-    //        "Location": "Custom_Mansion_Interior"
-    //      },
-    //      "RequiredTasks": [ "Find_Mansion" ]
-    //    }
-    //  ]
-    //}
+    {
+      "Name": "Act_2",
+      "Type": "PurrplingCat.QuestEssentials/Adventure",
+      "Title": "Explore the Mansion",
+      "Description": "Get to the bottom of what's going on in this mansion.'",
+      //"Objective": "Investigate around the blacksmith",
+      "NextQuests": [ "Act_2" ],
+      //"Reward": 0,
+      //"RewardAmount": 0,
+      //"RewardDescription": "",
+      "Cancelable": false,
+      "ConversationTopic": null,
+      "Colors": {
+        "TitleColor": 0,
+        "TextColor": 0,
+        "ObjectiveColor": 2
+      },
+      "Tasks": [
+        {
+          "Name": "Talk_Butler_1",
+          "Type": "Talk",
+          "Description": "Talk with the man in the mansion.",
+          "Data": {
+            // Talk to abby and then see an event
+            "NpcName": "Brennan",
+            "DialogueText": "Progress Act_2 Quest "
+            //"StartEvent": "44017601 Data\\Events\\FarmHouse:3917601/f Emily 3500/O Emily/n emilyFiber/A emilyFiber/t 2000 2400/p Emily",
+            //"ReceiveItems": "object_ancient_fruit" // And get ancient fruit from Abby when talk
+          }
+        },
+        {
+          "Name": "Enter_Mansion",
+          "Type": "EnterSpot",
+          "Description": "Follow the apprentice into the mansion",
+          "Data": {
+            "Tile": "44,47",
+            "Location": "Custom_Mansion_Interior"
+          },
+          "RequiredTasks": [ "Find_Mansion" ]
+        }
+      ]
+    }
 
   ],
   "Offers": [
