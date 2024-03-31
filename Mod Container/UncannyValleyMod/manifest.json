@@ -1,7 +1,7 @@
 {
   "Name": "UncannyValleyMod",
   "Author": "UncannyValley",
-  "Version": "1.0.0",
+  "Version": "1.0.1",
   "Description": "Horror mod for Stardew Valley",
   "UniqueID": "UncannyValley.UncannyValleyMod",
   "EntryDll": "UncannyValleyMod.dll",

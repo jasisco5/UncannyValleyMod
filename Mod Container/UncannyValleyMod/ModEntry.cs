@@ -12,6 +12,7 @@ using StardewValley.Tools;
 using StardewValley.TerrainFeatures;
 using ContentPatcher;
 using SpaceShared.APIs;
+using Microsoft.Xna.Framework.Audio;
 
 namespace UncannyValleyMod
 {
@@ -48,6 +49,8 @@ namespace UncannyValleyMod
 
             helper.Events.GameLoop.Saving += this.OnSaving;
 
+            // helper.Events.GameLoop.UpdateTicking += this.SoundSystem;
+
             // Get C# modded content
             modWeapon = new ModWeapon(helper);
             modMaps = new ModMaps(helper, this.Monitor, modWeapon);
@@ -70,6 +73,19 @@ namespace UncannyValleyMod
             scApi.RegisterSerializerType(typeof(ReapingEnchantment));
             // Reference to Content Patcher
             cpApi = this.Helper.ModRegistry.GetApi<ContentPatcher.IContentPatcherAPI>("Pathoschild.ContentPatcher");
+
+            
+            /*// Working with Quest Framework
+            {
+                qfApi = this.Helper.ModRegistry.GetApi<IQuestApi>("PurrplingCat.QuestFramework");
+                //IQuestApi qfApi = this.Helper.ModRegistry.GetApi<IQuestApi>("PurrplingCat.QuestEssentials");
+                qfManagedApi = qfApi.GetManagedApi(this.ModManifest);
+
+                qfApi.Events.GettingReady += (_sender, _e) => {
+                    //qfManagedApi.RegisterQuest( enter quest definition here );
+                };
+            }*/
+
 
 
             // Working with Content Patcher
@@ -203,5 +219,31 @@ namespace UncannyValleyMod
             modMaps.tokens = tokens;
 
         }
+
+        // helper method for sounds
+        // checks the in game location, then checks the player coordinates before playing the sounds at a specified location
+        /*private void SoundSystem(object sender, EventArgs e)
+        {
+            SoundPlayer();
+        }*/
+
+        /*private void SoundPlayer()
+        {
+            // check game location
+            // ---- MANSION EXT ----
+            if (Game1.currentLocation == Game1.getLocationFromName("Custom_Mansion_Exterior"))
+            {
+                // check coordinates
+                if (Game1.player.getTileX() > 20 && Game1.player.getTileX() < 30 && Game1.player.getTileY() > 34 && Game1.player.getTileY() < 44)
+                {
+                    // play sound
+                    Game1.currentLocation.playSoundAt("thunder", new Vector2(25, 39));
+                }
+            }
+            else if (Game1.currentLocation == Game1.getLocationFromName("Custom_Mansion_Interior"))
+            {
+
+            }
+        }*/
     }
 }
