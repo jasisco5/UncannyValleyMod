@@ -61,7 +61,7 @@
                "Position": {"X": 54, "Y": 24},
                "Layer": "Buildings",
                "SetProperties": {
-                  "Action": "Warp 22 3 Custom_Mansion_Basement"
+                  "Action": "Warp 39 14 Custom_Mansion_Basement"
                }
             }
          ]
