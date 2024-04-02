@@ -49,7 +49,7 @@ namespace UncannyValleyMod
             {
                 this.monitor.Log($"Starting Act1_2", LogLevel.Debug);
                 Game1.player.addQuest("2051902");
-                SpaceCore.Events.SpaceEvents.OnEventFinished -= this.OnEventFinished;
+                
             }
         }
 
@@ -70,7 +70,30 @@ namespace UncannyValleyMod
                     questObtained[2051902] = true;
                     this.monitor.Log($"{Game1.player.Name} obtained quest Act2_1", LogLevel.Debug);
                 }
+                // Obtained Act2_2
+                if (!questObtained[2051903] && Game1.player.hasQuest("2051903"))
+                {
+                    questObtained[2051903] = true;
+                    this.monitor.Log($"{Game1.player.Name} obtained quest Act2_2", LogLevel.Debug);
+
+                    helper.Events.GameLoop.OneSecondUpdateTicking += this.Act2_2;
+                }
             }
+        }
+
+        // Speaking to 'Brennen' completes the quest
+        private void Act2_2(object sender, OneSecondUpdateTickingEventArgs e)
+        {
+            if(Game1.currentSpeaker != null)
+            {
+                this.monitor.Log($"Current Speaker = {Game1.currentSpeaker.Name}.", LogLevel.Debug);
+                if (Game1.currentSpeaker.Name == "Brennan")
+                {
+                    Game1.player.completeQuest("2051903");
+                    helper.Events.GameLoop.OneSecondUpdateTicking -= this.Act2_2;
+                }
+            }
+            
         }
     }
 }

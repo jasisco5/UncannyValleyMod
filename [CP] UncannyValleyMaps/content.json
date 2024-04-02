@@ -45,10 +45,7 @@
                   "Action": "Warp 44 47 Custom_Mansion_Interior"
                }
             }
-         ],
-        "When": {
-          "Query: '{{UncannyValley.UncannyValleyMod/WeaponObtained}}' = 'true'": true
-        }
+         ]
       },
       {
          // try adding a conditional warp

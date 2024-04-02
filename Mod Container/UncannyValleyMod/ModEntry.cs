@@ -75,21 +75,6 @@ namespace UncannyValleyMod
             scApi.RegisterSerializerType(typeof(ReapingEnchantment));
             // Reference to Content Patcher
             cpApi = this.Helper.ModRegistry.GetApi<ContentPatcher.IContentPatcherAPI>("Pathoschild.ContentPatcher");
-
-            
-            /*// Working with Quest Framework
-            {
-                qfApi = this.Helper.ModRegistry.GetApi<IQuestApi>("PurrplingCat.QuestFramework");
-                //IQuestApi qfApi = this.Helper.ModRegistry.GetApi<IQuestApi>("PurrplingCat.QuestEssentials");
-                qfManagedApi = qfApi.GetManagedApi(this.ModManifest);
-
-                qfApi.Events.GettingReady += (_sender, _e) => {
-                    //qfManagedApi.RegisterQuest( enter quest definition here );
-                };
-            }*/
-
-
-
             // Working with Content Patcher
             AddTokens();
             {

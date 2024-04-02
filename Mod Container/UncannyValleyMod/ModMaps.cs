@@ -87,15 +87,6 @@ namespace UncannyValleyMod
             if (Game1.getLocationFromName("FarmHouse") == e.NewLocation)
             {
                 this.Monitor.Log($"{e.Player.Name} is in FarmHouse", LogLevel.Debug);
-                // Spawn a Journal Scrap
-
-                if (saveModel.canSpawnNote)
-                {
-                    //Game1.getLocationFromName("FarmHouse")
-                     //.dropObject(new StardewValley.Object(new Vector2(6 * 64, 8 * 64),
-                     //842, "Journal Scrap", true, true, false, true));
-                    saveModel.canSpawnNote = false;
-                }
 
                 if (!saveModel.weaponObtained) { modWeapon.AddWeaponToInv(); }
                 return;
