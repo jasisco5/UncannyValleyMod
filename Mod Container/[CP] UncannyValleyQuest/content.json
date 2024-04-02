@@ -1,0 +1,13 @@
+{
+  "Format": "1.29.0",
+  "Changes": [
+    {
+      "Action": "EditData",
+      "Target": "Data/Quests",
+      "Entries": {
+        "2051901": "Location/A Strange Place/Vincent saw something strange around the blacksmith. Help Jodi and investigate./Investigate around the blacksmith/Custom_Mansion_Exterior/-1/0/-1/false",
+        "2051902": "Location/A Strange Place/Follow the Wizard's Apprenctice into the mansion/Enter the Mansion/Custom_Mansion_Interior/-1/0/-1/false"
+      }
+    }
+  ]
+}
