@@ -28,6 +28,7 @@ namespace UncannyValleyMod
 
         // Other File References
         ModWeapon modWeapon;
+        ModQuests modQuests;
         ModMaps modMaps;
 
         /*********
@@ -54,6 +55,7 @@ namespace UncannyValleyMod
             // Get C# modded content
             modWeapon = new ModWeapon(helper);
             modMaps = new ModMaps(helper, this.Monitor, modWeapon);
+            modQuests = new ModQuests(helper, this.Monitor);
         }
 
 
