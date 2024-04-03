@@ -2,6 +2,11 @@
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
+		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+		<ApplicationIcon />
+		<OutputType>Library</OutputType>
+		<StartupObject />
+		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 	</PropertyGroup>
 
 	<ItemGroup>
