@@ -30,9 +30,7 @@
          "Action": "EditMap",
          "Target": "Maps/Town",
          "AddWarps": [
-            "119 76 Custom_Mansion_Exterior 1 49",
-            "119 75 Custom_Mansion_Exterior 1 48",
-            "119 77 Custom_Mansion_Exterior 1 50"
+            "121 76 Custom_Mansion_Exterior 1 49"
          ] 
       },
       {
@@ -47,10 +45,7 @@
                   "Action": "Warp 44 47 Custom_Mansion_Interior"
                }
             }
-         ],
-        "When": {
-          "Query: '{{UncannyValley.UncannyValleyMod/WeaponObtained}}' = 'true'": true
-        }
+         ]
       },
       {
          // try adding a conditional warp
@@ -61,7 +56,7 @@
                "Position": {"X": 54, "Y": 24},
                "Layer": "Buildings",
                "SetProperties": {
-                  "Action": "Warp 22 3 Custom_Mansion_Basement"
+                  "Action": "Warp 39 14 Custom_Mansion_Basement"
                }
             }
          ]

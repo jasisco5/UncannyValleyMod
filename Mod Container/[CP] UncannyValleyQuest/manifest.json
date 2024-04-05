@@ -4,17 +4,12 @@
   "Version": "1.0.0",
   "Description": "Uncanny Valley Quests",
   "UniqueID": "UncannyValley.UncannyValleyQuest",
-  "MinimumApiVersion": "3.6.0",
+  "MinimumApiVersion": "4.0.0",
   "UpdateKeys": [],
   "ContentPackFor": {
-    "UniqueID": "PurrplingCat.QuestFramework",
-    "MinimumVersion": "1.2.0"
+    "UniqueID": "Pathoschild.ContentPatcher"
   },
   "Dependencies": [
-    {
-      "UniqueID": "PurrplingCat.QuestEssentials",
-      "MinimumVersion": "0.0.1"
-    },
     {
       "UniqueID": "UncannyValley.UncannyValleyNPCTest",
       "MinimumVersion": "0.0.1"
