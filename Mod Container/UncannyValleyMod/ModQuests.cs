@@ -143,7 +143,7 @@ namespace UncannyValleyMod
                     questObtained[2051905] = true; 
                     // Open Basement
                     this.monitor.Log($"{Game1.player.Name} finished quest Act2_3", LogLevel.Debug);
-                    this.monitor.Log($"{Game1.player.Name} got the key to the Mansion's Basement.", LogLevel.Info);
+                    Game1.addHUDMessage(HUDMessage.ForCornerTextbox($"{Game1.player.Name} got the key to the Mansion's Basement."));
                     isBasementOpen = true;
                     SpawnBasementDoor();
                     // Add totem logic
