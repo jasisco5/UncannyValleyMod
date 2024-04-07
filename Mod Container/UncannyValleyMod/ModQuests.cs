@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using StardewValley;
 using StardewValley.Monsters;
 using SpaceCore.UI;
+using Microsoft.Xna.Framework;
 
 namespace UncannyValleyMod
 {
@@ -18,6 +19,7 @@ namespace UncannyValleyMod
         Dictionary<int, bool> questObtained = new Dictionary<int, bool>();
 
         bool mansionMonstersSpawned = false;
+        bool isBasementOpen = false;
 
         private void initQuestObtained()
         {
@@ -28,6 +30,17 @@ namespace UncannyValleyMod
             questObtained[2051904] = false;
             questObtained[2051905] = false;
         }
+        private void SpawnBasementDoor()
+        {
+            this.monitor.Log($"Spawning the Basement Door", LogLevel.Debug);
+            if (isBasementOpen)
+            {
+                Game1.getLocationFromName("Custom_Mansion_Interior").setTileProperty(54, 24, "Buildings", "Action", "Warp 39 14 Custom_Mansion_Basement");
+            } else
+            {
+                Game1.getLocationFromName("Custom_Mansion_Interior").setTileProperty(54, 24, "Buildings", "Action", "");
+            }
+        }
         public ModQuests(IModHelper _helper, IMonitor _monitor)
         {
             monitor = _monitor;
@@ -36,13 +49,18 @@ namespace UncannyValleyMod
             initQuestObtained();
             helper.Events.GameLoop.OneSecondUpdateTicking += this.OnQuestActivity;
             helper.Events.Player.Warped += this.OnWarped;
-            helper.Events.GameLoop.DayStarted += (object sender, DayStartedEventArgs e) => { mansionMonstersSpawned = false; };
+            helper.Events.GameLoop.DayStarted += (object sender, DayStartedEventArgs e) => 
+            { 
+                mansionMonstersSpawned = false; 
+                SpawnBasementDoor();
+            };
 
             // Start quest code
             SpaceCore.Events.SpaceEvents.OnEventFinished += this.OnEventFinished;
             // OnItemEaten - Check player.itemToEat for what they just ate.
             // BombExploded - When a bomb explodes in a location. Useful for zelda-like puzzle walls
         }
+
 
         private void OnWarped(object sender, WarpedEventArgs e)
         {
@@ -56,6 +74,9 @@ namespace UncannyValleyMod
             }
         }
 
+        /// <summary>
+        /// Events called when an event/cutscene ends
+        /// </summary>
         private void OnEventFinished(object sender, EventArgs e)
         {
             this.monitor.Log($"Event id = {Game1.CurrentEvent.id}", LogLevel.Debug);
@@ -79,6 +100,10 @@ namespace UncannyValleyMod
             }
         }
 
+        /// <summary>
+        /// Events called when the player first obtains a quest.
+        /// Called once every second.
+        /// </summary>
         private void OnQuestActivity(object sender, OneSecondUpdateTickingEventArgs e)
         {
             // True when the quest icon is glowing
@@ -104,7 +129,7 @@ namespace UncannyValleyMod
 
                     helper.Events.GameLoop.OneSecondUpdateTicking += this.Act2_2;
                 }
-                // Obtained Act2_3 (Slay Slimes)
+                // Obtained Act2_3 (Slay Skeletons)
                 if (!questObtained[2051904] && Game1.player.hasQuest("2051904"))
                 {
                     questObtained[2051904] = true;
@@ -112,10 +137,27 @@ namespace UncannyValleyMod
 
                     SpawnMansionMonsters();
                 }
+                // Obtained Act2_4 (Break Totem)
+                if (!questObtained[2051905] && Game1.player.hasQuest("2051905"))
+                {
+                    questObtained[2051905] = true; 
+                    // Open Basement
+                    this.monitor.Log($"{Game1.player.Name} finished quest Act2_3", LogLevel.Debug);
+                    this.monitor.Log($"{Game1.player.Name} got the key to the Mansion's Basement.", LogLevel.Info);
+                    isBasementOpen = true;
+                    SpawnBasementDoor();
+                    // Add totem logic
+                    this.monitor.Log($"{Game1.player.Name} obtained quest Act2_4", LogLevel.Debug);
+
+                    helper.Events.Input.ButtonPressed += this.AttackTotem;
+                }
+
             }
         }
 
-        // Speaking to 'Butler' completes the quest
+        /// <summary>
+        /// Act2_2 : Speaking to 'Butler' completes the quest
+        /// </summary>
         private void Act2_2(object sender, OneSecondUpdateTickingEventArgs e)
         {
             if(Game1.currentSpeaker != null)
@@ -129,11 +171,34 @@ namespace UncannyValleyMod
                 }
             }
         }
+
+        /// <summary>
+        /// Act2_4 : Attack the Totem with the Spectral Sabre
+        /// </summary>
+        private void AttackTotem(object sender, ButtonPressedEventArgs e)
+        {
+            if (Game1.currentLocation == null) { return; }
+            if (Game1.currentLocation == Game1.getLocationFromName("Custom_Mansion_Basement") && e.Button.IsUseToolButton())
+            {
+                Vector2 position = e.Cursor.GrabTile;
+                this.monitor.Log($"Clicked Tile = {position}.", LogLevel.Debug);
+                if (position.Equals(new Vector2(78, 72)))
+                {
+                    this.monitor.Log($"Totem Tile Clicked", LogLevel.Debug);
+                    if (Game1.player.CurrentTool.hasEnchantmentOfType<ReapingEnchantment>())
+                    {
+                        this.monitor.Log($"Spectral Saber Used", LogLevel.Debug);
+                        Game1.player.completeQuest("2051905");
+                        helper.Events.Input.ButtonPressed -= this.AttackTotem;
+                    }
+                }
+            }
+        }
         // Spawn Monsters
         private void SpawnMansionMonsters()
         {
             if (mansionMonstersSpawned) { return; }
-            this.monitor.Log($"Spawning Slimes", LogLevel.Debug);
+            this.monitor.Log($"Spawning Monsters", LogLevel.Debug);
             mansionMonstersSpawned = true;
             Monster[] slimes = new Monster[20];
             slimes[0] = new GreenSlime(new Microsoft.Xna.Framework.Vector2(70 * 64, 27 * 64), Microsoft.Xna.Framework.Color.BlueViolet);
