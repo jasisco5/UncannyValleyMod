@@ -110,7 +110,7 @@
       "Action": "EditData",
       "Target": "Data/Events/Custom_Mansion_Exterior",
       "Entries": {
-        "20020614/t 600 1500/w sunny": "nightTime/25 37/farmer 23 48 1 Brennan 27 37 0/move farmer 0 -11 1 false/pause 1000/speak Brennan \"Hi there. Never seen you around here before.\"/pause 1000/speak Brennan \"Name's Brennan. I'm a wizard... or an apprentice one at least.$s#$b#What's your name?\"/pause 1000/speak Brennan \"@ huh? Cool.\"/pause 1200/speak Brennan \"I heard some reports that there was a ghost sighting around here. Came to check it out.#$b#You wanna join me?\"/pause 700/move Brennan -2 0 0 false/move Brennan 0 -10 0 false/playSound doorClose/pause 200/warp Brennan 0 0/pause 500/end"
+        "2051902/e 2051901": "nightTime/25 37/farmer 23 48 1 Brennan 27 37 0/skippable/move farmer 0 -11 1 false/pause 1000/speak Brennan \"Hi there. Never seen you around here before.\"/pause 1000/speak Brennan \"Name's Brennan. I'm a wizard... or an apprentice one at least.$s#$b#What's your name?\"/pause 1000/speak Brennan \"@ huh? Cool.\"/pause 1200/speak Brennan \"I heard some reports that there was a ghost sighting around here. Came to check it out.#$b#You wanna join me?\"/pause 700/move Brennan -2 0 0 false/move Brennan 0 -10 0 false/playSound doorClose/pause 200/warp Brennan 0 0/pause 500/end"
       } //e <100162>/e <20020615>
     },
     {
@@ -118,7 +118,7 @@
       "Action": "EditData",
       "Target": "Data/Events/Custom_Mansion_Interior",
       "Entries": {
-        "20020615/t 600 1500/w sunny": "nightTime/43 42/farmer 44 44 1 Brennan 47 37 0 Butler 19 18 0/move farmer 0 -7 1 false/pause 1000/speak Brennan \"Interesting place here. I don't think the door has ever been unlocked before.\"/pause 1000/faceDirection Brennan 3 true/speak Brennan \"Oh hey @.$s#$b#This place seems kinda clean for a mansion that's supposedly abandoned, huh?\"/pause 1000/move Butler 25 0 2 true/speak Brennan \"Well, I don't see any ghosts at the moment.\"/pause 1000/viewport move 0 -2 7000/pause 500/speak Butler \"Well, look at this! Guests!\"/faceDirection farmer 0 true/faceDirection Brennan 0 true/emote farmer 40/beginSimultaneousCommand/faceDirection farmer 2 true /jump farmer/emote farmer 16/endSimultaneousCommand/faceDirection farmer 0 true/pause 1000/speak Butler \"Haha! No need for alarm. I'm just a butler, after all.\"/move Butler 0 14 2 false/viewport move 0 1 5000/pause 500/speak Butler \"Welcome to the manor! It's been quite some time since we last had visitors.\"/pause 500/speak Brennan \"Ah, pardon me, but are you a ghost?$u\"/pause 500/speak Butler \"A ghost?$u#$b# Haha! Are you some sort of fantasy role-playing wizard?$h\"/pause 500/beginSimultaneousCommand/emote farmer 40 /emote Brennan 40/endSimultaneousCommand/pause 1000/end"
+        "2051903/e 2051902": "nightTime/43 42/farmer 44 44 1 Brennan 47 37 0 Butler 19 18 0/skippable/move farmer 0 -7 1 false/pause 1000/speak Brennan \"Interesting place here. I don't think the door has ever been unlocked before.\"/pause 1000/faceDirection Brennan 3 true/speak Brennan \"Oh hey @.$s#$b#This place seems kinda clean for a mansion that's supposedly abandoned, huh?\"/pause 1000/move Butler 25 0 2 true/speak Brennan \"Well, I don't see any ghosts at the moment.\"/pause 1000/viewport move 0 -2 7000/pause 500/speak Butler \"Well, look at this! Guests!\"/faceDirection farmer 0 true/faceDirection Brennan 0 true/emote farmer 40/beginSimultaneousCommand/faceDirection farmer 2 true /jump farmer/emote farmer 16/endSimultaneousCommand/faceDirection farmer 0 true/pause 1000/speak Butler \"Haha! No need for alarm. I'm just a butler, after all.\"/move Butler 0 14 2 false/viewport move 0 1 5000/pause 500/speak Butler \"Welcome to the manor! It's been quite some time since we last had visitors.\"/pause 500/speak Brennan \"Ah, pardon me, but are you a ghost?$u\"/pause 500/speak Butler \"A ghost?$u#$b# Haha! Are you some sort of fantasy role-playing wizard?$h\"/pause 500/beginSimultaneousCommand/emote farmer 40 /emote Brennan 40/endSimultaneousCommand/pause 1000/end"
       }
     },
     {
@@ -126,7 +126,7 @@
       "Action": "EditData",
       "Target": "Data/Events/Farm",
       "Entries": {
-        "20020616/t 600 800": "continue/64 15/farmer 64 16 2 Jodi 64 18 0/pause 1500/speak Jodi \"Hello. Sorry to bother you so early in the morning.$s#$b#My son Vincent, well, yesterday... $s#$b#He was out playing last night, over by Clint's house, and he said he saw a ghost or something.#$b#I'm sorry to ask you this, but do you mind going and checking it out? Just to ease my fears.#$b#Thank you!$h\"/pause 500/end"
+        "2051901/t 600 800/e 100162": "continue/64 15/farmer 64 16 2 Jodi 64 18 0/skippable/pause 1500/speak Jodi \"Hello. Sorry to bother you so early in the morning.$s#$b#My son Vincent, well, yesterday... $s#$b#He was out playing last night, over by Clint's house, and he said he saw a ghost or something.#$b#I'm sorry to ask you this, but do you mind going and checking it out? Just to ease my fears.#$b#Thank you!$h\"/pause 500/end"
       }
     }
   ]

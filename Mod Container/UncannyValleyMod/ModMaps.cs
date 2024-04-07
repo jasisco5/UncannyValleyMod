@@ -86,7 +86,7 @@ namespace UncannyValleyMod
             // Player is in the FarmHouse
             if (Game1.getLocationFromName("FarmHouse") == e.NewLocation)
             {
-                this.Monitor.Log($"{e.Player.Name} is in FarmHouse", LogLevel.Debug);
+                //this.Monitor.Log($"{e.Player.Name} is in FarmHouse", LogLevel.Debug);
 
                 if (!saveModel.weaponObtained) { modWeapon.AddWeaponToInv(); }
                 return;
@@ -102,13 +102,13 @@ namespace UncannyValleyMod
             if (Game1.getLocationFromName("Custom_Mansion_Exterior") == e.NewLocation && Game1.getLocationFromName("Town") == e.OldLocation)
             {
                 // Apply rain
-                this.Monitor.Log("Entering Uncanny Valley location, applying rain after this message     | wasRaining = " + wasRaining + " | wasLightning = " + wasLightning + " | wasDebrisWeather = " + wasDebrisWeather + " | wasSnowing = " + wasSnowing, LogLevel.Info);
+                //this.Monitor.Log("Entering Uncanny Valley location, applying rain after this message     | wasRaining = " + wasRaining + " | wasLightning = " + wasLightning + " | wasDebrisWeather = " + wasDebrisWeather + " | wasSnowing = " + wasSnowing, LogLevel.Info);
                 Game1.isRaining = true;
                 Game1.isLightning = false;
                 Game1.isDebrisWeather = false;
                 Game1.isSnowing = false;
                 Game1.performTenMinuteClockUpdate();
-                this.Monitor.Log("Entering Uncanny Valley location, rain applied                         | wasRaining = " + wasRaining + " | wasLightning = " + wasLightning + " | wasDebrisWeather = " + wasDebrisWeather + " | wasSnowing = " + wasSnowing, LogLevel.Info);
+                //this.Monitor.Log("Entering Uncanny Valley location, rain applied                         | wasRaining = " + wasRaining + " | wasLightning = " + wasLightning + " | wasDebrisWeather = " + wasDebrisWeather + " | wasSnowing = " + wasSnowing, LogLevel.Info);
 
                 // Door warp
                 if (!oldSaveModel.weaponObtained && saveModel.weaponObtained)
@@ -124,23 +124,23 @@ namespace UncannyValleyMod
             else if (Game1.getLocationFromName("Town") == e.NewLocation && Game1.getLocationFromName("Custom_Mansion_Exterior") == e.OldLocation)
             {
                 // Revert weather changes
-                this.Monitor.Log("Leaving Uncanny Valley location, undoing weather changes after this message        | wasRaining = " + wasRaining + " | wasLightning = " + wasLightning + " | wasDebrisWeather = " + wasDebrisWeather + " | wasSnowing = " + wasSnowing, LogLevel.Info);
+                //this.Monitor.Log("Leaving Uncanny Valley location, undoing weather changes after this message        | wasRaining = " + wasRaining + " | wasLightning = " + wasLightning + " | wasDebrisWeather = " + wasDebrisWeather + " | wasSnowing = " + wasSnowing, LogLevel.Info);
                 Game1.isRaining = wasRaining;
                 Game1.isLightning = wasLightning;
                 Game1.isDebrisWeather = wasDebrisWeather;
                 Game1.isSnowing = wasSnowing;
                 Game1.performTenMinuteClockUpdate();
-                this.Monitor.Log("Leaving Uncanny Valley location, weather changes undone.                           | wasRaining = " + wasRaining + " | wasLightning = " + wasLightning + " | wasDebrisWeather = " + wasDebrisWeather + " | wasSnowing = " + wasSnowing, LogLevel.Info);
+                //this.Monitor.Log("Leaving Uncanny Valley location, weather changes undone.                           | wasRaining = " + wasRaining + " | wasLightning = " + wasLightning + " | wasDebrisWeather = " + wasDebrisWeather + " | wasSnowing = " + wasSnowing, LogLevel.Info);
             }
             // Player is not entering or leaving the mod's areas
             else 
             {
-                this.Monitor.Log("Not interacting with a UV area, updating wasWeather variables after this message   | wasRaining = " + wasRaining + " | wasLightning = " + wasLightning + " | wasDebrisWeather = " + wasDebrisWeather + " | wasSnowing = " + wasSnowing, LogLevel.Info);
+               // this.Monitor.Log("Not interacting with a UV area, updating wasWeather variables after this message   | wasRaining = " + wasRaining + " | wasLightning = " + wasLightning + " | wasDebrisWeather = " + wasDebrisWeather + " | wasSnowing = " + wasSnowing, LogLevel.Info);
                 wasRaining = Game1.isRaining;
                 wasLightning = Game1.isLightning;
                 wasDebrisWeather = Game1.isDebrisWeather;
                 wasSnowing = Game1.isSnowing;
-                this.Monitor.Log("Not interacting with a UV area, updated wasWeather variables                       | wasRaining = " + wasRaining + " | wasLightning = " + wasLightning + " | wasDebrisWeather = " + wasDebrisWeather + " | wasSnowing = " + wasSnowing, LogLevel.Info);
+                //this.Monitor.Log("Not interacting with a UV area, updated wasWeather variables                       | wasRaining = " + wasRaining + " | wasLightning = " + wasLightning + " | wasDebrisWeather = " + wasDebrisWeather + " | wasSnowing = " + wasSnowing, LogLevel.Info);
             }
         }
     }

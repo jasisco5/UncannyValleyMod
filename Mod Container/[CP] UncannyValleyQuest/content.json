@@ -5,8 +5,10 @@
       "Action": "EditData",
       "Target": "Data/Quests",
       "Entries": {
-        "2051901": "Location/A Strange Place/Vincent saw something strange around the blacksmith. Help Jodi and investigate./Investigate around the blacksmith/Custom_Mansion_Exterior/-1/0/-1/false",
-        "2051902": "Location/A Strange Place/Follow the Wizard's Apprenctice into the mansion/Enter the Mansion/Custom_Mansion_Interior/-1/0/-1/false"
+        "2051901": "Location/Uncanny Valley/Vincent saw something strange around the blacksmith. Help Jodi and investigate./Investigate around the blacksmith/Custom_Mansion_Exterior/-1/0/-1/false",
+        "2051902": "Location/Uncanny Valley/Follow the Wizard's Apprenctice into the mansion/Enter the Mansion/Custom_Mansion_Interior/-1/0/-1/false",
+        "2051903": "Basic/Uncanny Valley/Find out what's going on from the Butler/Speak to the Butler/-1/0/-1/false",
+        "2051904": "Monster/Uncanny Valley/The Butler has asked you to vanquish the monsters in the mansion./0 of 10 skeletons slain./Skeleton 10/-1/300/The last of the money in the mansion/false"
       }
     }
   ]
