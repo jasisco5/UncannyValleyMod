@@ -30,14 +30,14 @@
           "ItemType": "Weapon",
           "StockItemCurrency": "Money",
 		  "ItemIDs": [65],
-		  "StockPrice": 150,
+		  "StockPrice": 750,
           "Stock": 5,
         },
 				{
           "ItemType": "Object",
 		  "JAPacks": ["UncannyValley.UncannyValleyPotions"],
           "StockItemCurrency": "Money",
-		  "StockPrice": 100,
+		  "StockPrice": 200,
           "Stock": 10,
         }
       ],

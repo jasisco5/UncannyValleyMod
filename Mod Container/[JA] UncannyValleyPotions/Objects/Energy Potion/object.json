@@ -1,8 +1,8 @@
 {
-  "Name": "EnergyPotion",
-  "Description": "",
+  "Name": "Energy Potion",
+  "Description": "Provides a temporary increase to max energy, while recovering it.",
   "Category": "Cooking",
-  "Edibility": 200, 
+  "Edibility": 150, 
   "EdibleIsDrink": true, 
   "EdibleBuffs": {
     "Farming": 0,
@@ -10,7 +10,7 @@
     "Mining": 0,
     "Luck": 0,
     "Foraging": 0,
-    "MaxStamina": 200,
+    "MaxStamina": 100,
     "MagnetRadius": 0,
     "Speed": 0,
     "Defense": 0,
