@@ -54,8 +54,8 @@ namespace UncannyValleyMod
 
             // Get C# modded content
             modWeapon = new ModWeapon(helper);
-            modMaps = new ModMaps(helper, this.Monitor, modWeapon);
-            modQuests = new ModQuests(helper, this.Monitor);
+            modMaps = new ModMaps(helper, this.Monitor);
+            modQuests = new ModQuests(helper, this.Monitor, modWeapon);
         }
 
 

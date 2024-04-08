@@ -17,6 +17,7 @@ namespace UncannyValleyMod
     {
         IModHelper helper;
         IMonitor monitor;
+        private ModWeapon modWeapon;
         public ModSaveData saveModel { get; set; }
         Dictionary<int, bool> questsObtained = new Dictionary<int, bool>();
         bool mansionMonstersSpawned = false;
@@ -66,10 +67,11 @@ namespace UncannyValleyMod
                 Game1.getLocationFromName("Custom_Mansion_Interior").setTileProperty(54, 24, "Buildings", "Action", "");
             }
         }
-        public ModQuests(IModHelper _helper, IMonitor _monitor)
+        public ModQuests(IModHelper _helper, IMonitor _monitor, ModWeapon _modWeapon)
         {
             monitor = _monitor;
             helper = _helper;
+            modWeapon = _modWeapon;
             //SpaceCore.Api scApi;
             initQuestObtained();
             helper.Events.GameLoop.OneSecondUpdateTicking += this.OnQuestActivity;
@@ -168,7 +170,9 @@ namespace UncannyValleyMod
                 // Obtained Act2_4 (Break Totem)
                 if (!questsObtained[2051905] && Game1.player.hasQuest("2051905"))
                 {
-                    questsObtained[2051905] = true; 
+                    questsObtained[2051905] = true;
+                    // Get Weapon
+                    if (!saveModel.weaponObtained) { modWeapon.AddWeaponToInv(); }
                     // Open Basement
                     this.monitor.Log($"{Game1.player.Name} finished quest Act2_3", LogLevel.Debug);
                     Game1.addHUDMessage(HUDMessage.ForCornerTextbox($"Got the key to the Mansion's Basement."));

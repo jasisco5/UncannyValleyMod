@@ -23,7 +23,6 @@ namespace UncannyValleyMod
         public Dictionary<string, Token> tokens { get; set; }
         private IModHelper helper;
         private IMonitor Monitor;
-        private ModWeapon modWeapon;
 
         private bool wasRaining;
         private bool wasDebrisWeather;
@@ -36,11 +35,10 @@ namespace UncannyValleyMod
             this.saveModel = _saveModel;
         }
 
-        public ModMaps(IModHelper helper, IMonitor monitor, ModWeapon modWeapon)
+        public ModMaps(IModHelper helper, IMonitor monitor)
         {
             this.helper = helper;
             this.Monitor = monitor;
-            this.modWeapon = modWeapon;
             helper.Events.Player.Warped += this.OnWarped;
             if (!USEPATCHER)
             {
@@ -88,7 +86,6 @@ namespace UncannyValleyMod
             {
                 //this.Monitor.Log($"{e.Player.Name} is in FarmHouse", LogLevel.Debug);
 
-                if (!saveModel.weaponObtained) { modWeapon.AddWeaponToInv(); }
                 return;
             }
             // Player is in the Town
