@@ -31,7 +31,7 @@
           "StockItemCurrency": "Money",
 		  "ItemIDs": [65],
 		  "StockPrice": 750,
-          "Stock": 5,
+          "Stock": 1,
         },
 				{
           "ItemType": "Object",

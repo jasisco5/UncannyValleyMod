@@ -100,8 +100,8 @@ namespace UncannyValleyMod
             {
                 // Apply rain
                 //this.Monitor.Log("Entering Uncanny Valley location, applying rain after this message     | wasRaining = " + wasRaining + " | wasLightning = " + wasLightning + " | wasDebrisWeather = " + wasDebrisWeather + " | wasSnowing = " + wasSnowing, LogLevel.Info);
-                Game1.isRaining = true;
-                Game1.isLightning = false;
+                Game1.isRaining = false;
+                Game1.isLightning = true;
                 Game1.isDebrisWeather = false;
                 Game1.isSnowing = false;
                 Game1.performTenMinuteClockUpdate();
@@ -132,7 +132,7 @@ namespace UncannyValleyMod
             // Player is not entering or leaving the mod's areas
             else 
             {
-               // this.Monitor.Log("Not interacting with a UV area, updating wasWeather variables after this message   | wasRaining = " + wasRaining + " | wasLightning = " + wasLightning + " | wasDebrisWeather = " + wasDebrisWeather + " | wasSnowing = " + wasSnowing, LogLevel.Info);
+                // this.Monitor.Log("Not interacting with a UV area, updating wasWeather variables after this message   | wasRaining = " + wasRaining + " | wasLightning = " + wasLightning + " | wasDebrisWeather = " + wasDebrisWeather + " | wasSnowing = " + wasSnowing, LogLevel.Info);
                 wasRaining = Game1.isRaining;
                 wasLightning = Game1.isLightning;
                 wasDebrisWeather = Game1.isDebrisWeather;
