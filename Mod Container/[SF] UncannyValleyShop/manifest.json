@@ -1,7 +1,7 @@
 {
     "Name": "UncannyValleyShop",
     "Author": "UncannyValley",
-    "Version": "0.1.0",
+    "Version": "1.0.0",
     "Description": "The Wizard Aprrentice's shop from Uncanny Valley.",
     "UniqueID": "UncannyValley.UncannyValleyShop",
 	"MinimumApiVersion": "3.0.0",
@@ -12,7 +12,7 @@
 	"Dependencies": [
 		{
 			"UniqueID": "UncannyValley.UncannyValleyMod",
-			"MinimumVersion": "0.0.1"
+			"MinimumVersion": "1.0.1"
 		}
 	]
 }

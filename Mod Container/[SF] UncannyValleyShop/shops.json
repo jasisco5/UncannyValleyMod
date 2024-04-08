@@ -8,10 +8,17 @@
 		-81
       ],
       "PortraitPath": "assets/shop.png",
-      "Quote": "Whaddaya buyin?",
+      "Quote": "Some items for your adventure.",
       "MaxNumItemsSoldInStore": 2147483647,
       "DefaultSellPriceMultiplier": 1.0,
       "ItemStocks": [
+	  	{
+          "ItemType": "Weapon",
+          "StockItemCurrency": "Money",
+		  "ItemIDs": [67],
+		  "StockPrice": 750,
+          "Stock": 1,
+        },
         {
           "ItemType": "Object",
           "StockItemCurrency": "Money",
@@ -25,13 +32,6 @@
           "ItemNames": ["Joja Cola"],
 		  "StockPrice": 10,
           "Stock": 3,
-        },
-		{
-          "ItemType": "Weapon",
-          "StockItemCurrency": "Money",
-		  "ItemIDs": [65],
-		  "StockPrice": 750,
-          "Stock": 1,
         },
 				{
           "ItemType": "Object",
