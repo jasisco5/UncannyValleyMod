@@ -48,7 +48,7 @@ namespace UncannyValleyMod
                 {
                     var data = asset.AsDictionary<string, WeaponData>().Data;
                     WeaponData weaponData = new WeaponData();
-                    weaponData.Name = "Spectral Sabre";
+                    weaponData.Name = "SpectralSabre";
                     weaponData.DisplayName = "Spectral Sabre";
                     weaponData.Description = "A blade to reap the life and energy from monsters.";
                     weaponData.MinDamage = 40;

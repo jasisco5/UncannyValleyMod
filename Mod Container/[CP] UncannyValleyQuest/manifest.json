@@ -17,6 +17,10 @@
     {
       "UniqueID": "UncannyValley.UncannyValleyMaps",
       "MinimumVersion": "0.0.1"
+    },
+    {
+      "UniqueID": "UncannyValley.UncannyValleyMod",
+      "MinimumVersion": "0.0.1"
     }
   ]
 }
