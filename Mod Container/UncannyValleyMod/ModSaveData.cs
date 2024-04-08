@@ -11,7 +11,6 @@ namespace UncannyValleyMod
         public bool weaponObtained { get; set; } = false;
         public bool isBasementOpen { get; set; } = false;
         public int ExampleNumber { get; set; } = 0;
-
-        Dictionary<int, bool> questObtained { get; set; } = new Dictionary<int, bool>();
+        public Dictionary<int, bool> questsObtained { get; set; } = new Dictionary<int, bool>();
     }
 }

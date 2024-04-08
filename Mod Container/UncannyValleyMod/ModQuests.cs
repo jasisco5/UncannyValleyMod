@@ -9,6 +9,7 @@ using StardewValley;
 using StardewValley.Monsters;
 using SpaceCore.UI;
 using Microsoft.Xna.Framework;
+using Force.DeepCloner;
 
 namespace UncannyValleyMod
 {
@@ -16,19 +17,43 @@ namespace UncannyValleyMod
     {
         IModHelper helper;
         IMonitor monitor;
-        Dictionary<int, bool> questObtained = new Dictionary<int, bool>();
-
+        public ModSaveData saveModel { get; set; }
+        Dictionary<int, bool> questsObtained = new Dictionary<int, bool>();
         bool mansionMonstersSpawned = false;
         bool isBasementOpen = false;
 
+        // Save Methods
+
+        [EventPriority(EventPriority.Low)]
+        private void OnSaveLoaded(object sender, SaveLoadedEventArgs e)
+        {
+            if (saveModel.questsObtained.ContainsKey(2051901))
+            {
+                questsObtained = saveModel.questsObtained.DeepClone();
+            } 
+            else
+            {
+                saveModel.questsObtained = questsObtained.DeepClone();
+            }
+            isBasementOpen = saveModel.isBasementOpen.DeepClone();
+
+            SpawnBasementDoor();
+        }
+        [EventPriority(EventPriority.High)]
+        private void OnSaving(object sender, SavingEventArgs e)
+        {
+            saveModel.isBasementOpen = isBasementOpen.DeepClone();
+            saveModel.questsObtained = questsObtained.DeepClone();
+        }
+
         private void initQuestObtained()
         {
-            questObtained.Clear();
-            questObtained[2051901] = false;
-            questObtained[2051902] = false;
-            questObtained[2051903] = false;
-            questObtained[2051904] = false;
-            questObtained[2051905] = false;
+            questsObtained.Clear();
+            questsObtained[2051901] = false;
+            questsObtained[2051902] = false;
+            questsObtained[2051903] = false;
+            questsObtained[2051904] = false;
+            questsObtained[2051905] = false;
         }
         private void SpawnBasementDoor()
         {
@@ -52,8 +77,9 @@ namespace UncannyValleyMod
             helper.Events.GameLoop.DayStarted += (object sender, DayStartedEventArgs e) => 
             { 
                 mansionMonstersSpawned = false; 
-                SpawnBasementDoor();
             };
+            helper.Events.GameLoop.SaveLoaded += this.OnSaveLoaded;
+            helper.Events.GameLoop.Saving += this.OnSaving;
 
             // Start quest code
             SpaceCore.Events.SpaceEvents.OnEventFinished += this.OnEventFinished;
@@ -61,15 +87,17 @@ namespace UncannyValleyMod
             // BombExploded - When a bomb explodes in a location. Useful for zelda-like puzzle walls
         }
 
+        
 
         private void OnWarped(object sender, WarpedEventArgs e)
         {
             if (Game1.getLocationFromName("Custom_Mansion_Interior") == e.NewLocation)
             {
                 // On Slay Monster Quest
-                if (questObtained[2051904] == true && questObtained[2051905] == false)
+                if (questsObtained[2051904] == true && questsObtained[2051905] == false)
                 {
-                    SpawnMansionMonsters();
+                    // No need to respawn monsters since they are saved by default
+                    //SpawnMansionMonsters();
                 }
             }
         }
@@ -110,40 +138,40 @@ namespace UncannyValleyMod
             if (Game1.player.hasNewQuestActivity())
             {
                 // First Obtained the inital quest
-                if (!questObtained[2051901] && Game1.player.hasQuest("2051901"))
+                if (!questsObtained[2051901] && Game1.player.hasQuest("2051901"))
                 {
-                    questObtained[2051901] = true;
+                    questsObtained[2051901] = true;
                     this.monitor.Log($"{Game1.player.Name} obtained quest Act1", LogLevel.Debug);
                 }
                 // Obtained Act2_1 (Go to Mansion)
-                if (!questObtained[2051902] && Game1.player.hasQuest("2051902"))
+                if (!questsObtained[2051902] && Game1.player.hasQuest("2051902"))
                 {
-                    questObtained[2051902] = true;
+                    questsObtained[2051902] = true;
                     this.monitor.Log($"{Game1.player.Name} obtained quest Act2_1", LogLevel.Debug);
                 }
                 // Obtained Act2_2 (Speak to the Butler)
-                if (!questObtained[2051903] && Game1.player.hasQuest("2051903"))
+                if (!questsObtained[2051903] && Game1.player.hasQuest("2051903"))
                 {
-                    questObtained[2051903] = true;
+                    questsObtained[2051903] = true;
                     this.monitor.Log($"{Game1.player.Name} obtained quest Act2_2", LogLevel.Debug);
 
                     helper.Events.GameLoop.OneSecondUpdateTicking += this.Act2_2;
                 }
                 // Obtained Act2_3 (Slay Skeletons)
-                if (!questObtained[2051904] && Game1.player.hasQuest("2051904"))
+                if (!questsObtained[2051904] && Game1.player.hasQuest("2051904"))
                 {
-                    questObtained[2051904] = true;
+                    questsObtained[2051904] = true;
                     this.monitor.Log($"{Game1.player.Name} obtained quest Act2_3", LogLevel.Debug);
 
                     SpawnMansionMonsters();
                 }
                 // Obtained Act2_4 (Break Totem)
-                if (!questObtained[2051905] && Game1.player.hasQuest("2051905"))
+                if (!questsObtained[2051905] && Game1.player.hasQuest("2051905"))
                 {
-                    questObtained[2051905] = true; 
+                    questsObtained[2051905] = true; 
                     // Open Basement
                     this.monitor.Log($"{Game1.player.Name} finished quest Act2_3", LogLevel.Debug);
-                    Game1.addHUDMessage(HUDMessage.ForCornerTextbox($"{Game1.player.Name} got the key to the Mansion's Basement."));
+                    Game1.addHUDMessage(HUDMessage.ForCornerTextbox($"Got the key to the Mansion's Basement."));
                     isBasementOpen = true;
                     SpawnBasementDoor();
                     // Add totem logic
@@ -189,6 +217,7 @@ namespace UncannyValleyMod
                     {
                         this.monitor.Log($"Spectral Saber Used", LogLevel.Debug);
                         Game1.player.completeQuest("2051905");
+                        Game1.addHUDMessage(HUDMessage.ForCornerTextbox($"Reached the end of what is currently available."));
                         helper.Events.Input.ButtonPressed -= this.AttackTotem;
                     }
                 }

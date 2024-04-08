@@ -148,6 +148,7 @@ namespace UncannyValleyMod
             }
             modMaps.SetSaveModel(saveModel);
             modWeapon.saveModel = saveModel;
+            modQuests.saveModel = saveModel;
 
             foreach( KeyValuePair<string, Token> entry in tokens ) 
             {
