@@ -57,7 +57,7 @@ namespace UncannyValleyMod
                     weaponData.Texture = "Tilesheets/weapons";
                     weaponData.SpriteIndex = 67;
 
-                    data["67"] = weaponData;
+                    data["2051901"] = weaponData;
 
                 }, AssetEditPriority.Default);
             }
@@ -65,11 +65,14 @@ namespace UncannyValleyMod
 
         public void AddWeaponToInv()
         {
-            MeleeWeapon weapon = new MeleeWeapon("67");
+            MeleeWeapon weapon = new MeleeWeapon("2051901");
             BaseWeaponEnchantment reaping = new ReapingEnchantment();
             weapon.AddEnchantment(reaping);
             weapon.ParentSheetIndex = 65;
-            Game1.player.addItemToInventory(weapon);
+            if(Game1.player.addItemToInventory(weapon) != null)
+            {
+                Game1.createItemDebris(weapon, Game1.player.position.Value, 0);
+            }
             saveModel.weaponObtained = true;
             // If the state has changed, update the token and reload the map
             if (token != null && !token.weaponObtained)
