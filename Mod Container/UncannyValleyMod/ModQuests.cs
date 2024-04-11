@@ -223,6 +223,8 @@ namespace UncannyValleyMod
                         Game1.player.completeQuest("2051905");
                         Game1.addHUDMessage(HUDMessage.ForCornerTextbox($"Reached the end of what is currently available."));
                         helper.Events.Input.ButtonPressed -= this.AttackTotem;
+
+                        Game1.PlayEvent("2051904", false, false);
                     }
                 }
             }
