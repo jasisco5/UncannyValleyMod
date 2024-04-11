@@ -10,6 +10,7 @@ using StardewValley.Monsters;
 using SpaceCore.UI;
 using Microsoft.Xna.Framework;
 using Force.DeepCloner;
+using StardewValley.Network;
 
 namespace UncannyValleyMod
 {
@@ -24,7 +25,6 @@ namespace UncannyValleyMod
         bool isBasementOpen = false;
 
         // Save Methods
-
         [EventPriority(EventPriority.Low)]
         private void OnSaveLoaded(object sender, SaveLoadedEventArgs e)
         {
@@ -55,6 +55,11 @@ namespace UncannyValleyMod
             questsObtained[2051903] = false;
             questsObtained[2051904] = false;
             questsObtained[2051905] = false;
+            questsObtained[2051906] = false;
+            questsObtained[2051907] = false;
+            questsObtained[2051908] = false;
+            questsObtained[2051909] = false;
+            questsObtained[2051910] = false;
         }
         private void SpawnBasementDoor()
         {
@@ -121,6 +126,17 @@ namespace UncannyValleyMod
             {
                 this.monitor.Log($"Starting Act1_2", LogLevel.Debug);
                 Game1.player.addQuest("2051902");
+                
+                // Move player to where they are in the event
+                void teleport(object sender, OneSecondUpdateTickingEventArgs e)
+                {
+                    NetPosition position = Game1.player.position;
+                    Warp mansionWarp = new Warp((int)(position.X / 64), (int)(position.Y / 64), "Custom_Mansion_Exterior", 23, 37, false);
+                    Game1.player.warpFarmer(mansionWarp, 0);
+
+                    helper.Events.GameLoop.OneSecondUpdateTicking -= teleport;
+                }
+                helper.Events.GameLoop.OneSecondUpdateTicking += teleport;
             }
             // Meet Butler
             if (Game1.CurrentEvent.id == "2051903")
