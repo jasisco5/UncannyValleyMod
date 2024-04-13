@@ -152,7 +152,7 @@ namespace UncannyValleyMod
                 void teleport(object sender, OneSecondUpdateTickingEventArgs e)
                 {
                     NetPosition position = Game1.player.position;
-                    Warp mansionWarp = new Warp((int)(position.X / 64), (int)(position.Y / 64), "Custom_Mansion_Basement_Chase", 33, 43, false);
+                    Warp mansionWarp = new Warp((int)(position.X / 64), (int)(position.Y / 64), "Custom_Mansion_Basement_Chase", 78, 71, false);
                     Game1.player.warpFarmer(mansionWarp, 0);
 
                     helper.Events.GameLoop.OneSecondUpdateTicking -= teleport;
