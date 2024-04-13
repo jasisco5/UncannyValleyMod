@@ -12,10 +12,14 @@
          "Name": "Custom_Mansion_Interior",
          "FromMapFile": "assets/CustomMansion.tmx"
        },
-       {
-         "Name": "Custom_Mansion_Basement",
-         "FromMapFile":"assets/CustomMansionBasement.tmx"
-       }
+      {
+        "Name": "Custom_Mansion_Basement",
+        "FromMapFile": "assets/CustomMansionBasement.tmx"
+      },
+      {
+        "Name": "Custom_Mansion_Basement_Chase",
+        "FromMapFile": "assets/CustomMansionBasementChase.tmx"
+      }
     ],
 
     "Changes": [

@@ -144,6 +144,21 @@ namespace UncannyValleyMod
                 this.monitor.Log($"Starting Act2_3", LogLevel.Debug);
                 Game1.player.addQuest("2051903");
             }
+
+            // Warp to Chase
+            if (Game1.CurrentEvent.id == "2051904")
+            {
+                this.monitor.Log($"Starting Chase Scene", LogLevel.Debug);
+                void teleport(object sender, OneSecondUpdateTickingEventArgs e)
+                {
+                    NetPosition position = Game1.player.position;
+                    Warp mansionWarp = new Warp((int)(position.X / 64), (int)(position.Y / 64), "Custom_Mansion_Basement_Chase", 33, 43, false);
+                    Game1.player.warpFarmer(mansionWarp, 0);
+
+                    helper.Events.GameLoop.OneSecondUpdateTicking -= teleport;
+                }
+                helper.Events.GameLoop.OneSecondUpdateTicking += teleport;
+            }
         }
 
         /// <summary>
