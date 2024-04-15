@@ -13,6 +13,7 @@ using StardewValley.TerrainFeatures;
 using ContentPatcher;
 using SpaceShared.APIs;
 using Microsoft.Xna.Framework.Audio;
+using System.Security.Cryptography;
 
 namespace UncannyValleyMod
 {
@@ -25,6 +26,14 @@ namespace UncannyValleyMod
         IModHelper helper;
         ModSaveData saveModel;
         Dictionary<string, Token> tokens = new Dictionary<string, Token>();
+
+        // sound variables
+        Vector2 previousPosition = new Vector2();
+        Random random = new Random();
+        bool thunderHasPlayed = false;
+        bool office = false;
+        bool soundTest = false;
+        bool batFlight = false;
 
         // Other File References
         ModWeapon modWeapon;
@@ -50,7 +59,7 @@ namespace UncannyValleyMod
 
             helper.Events.GameLoop.Saving += this.OnSaving;
 
-            // helper.Events.GameLoop.UpdateTicking += this.SoundSystem;
+            helper.Events.GameLoop.UpdateTicking += this.SoundSystem;
 
             // Get C# modded content
             modWeapon = new ModWeapon(helper);
@@ -210,28 +219,92 @@ namespace UncannyValleyMod
 
         // helper method for sounds
         // checks the in game location, then checks the player coordinates before playing the sounds at a specified location
-        /*private void SoundSystem(object sender, EventArgs e)
+        private void SoundSystem(object sender, EventArgs e)
         {
             SoundPlayer();
-        }*/
+        }
 
-        /*private void SoundPlayer()
+        private void SoundPlayer()
         {
             // check game location
             // ---- MANSION EXT ----
             if (Game1.currentLocation == Game1.getLocationFromName("Custom_Mansion_Exterior"))
             {
                 // check coordinates
-                if (Game1.player.getTileX() > 20 && Game1.player.getTileX() < 30 && Game1.player.getTileY() > 34 && Game1.player.getTileY() < 44)
+                // Playes a thunder sound the first time the player is in front of the mansion
+                if (Game1.player.position.X > (20*64) && Game1.player.position.X < (30*64) && Game1.player.position.Y > (34 * 64) && Game1.player.position.Y < (44 * 64) && thunderHasPlayed == false)
                 {
                     // play sound
-                    Game1.currentLocation.playSoundAt("thunder", new Vector2(25, 39));
+                    Game1.currentLocation.localSound("thunder");
+                    thunderHasPlayed = true;
                 }
             }
             else if (Game1.currentLocation == Game1.getLocationFromName("Custom_Mansion_Interior"))
             {
+                // plays a ticking a sound when the player is near the grandfather clock
+                if (Game1.player.position.X > (60 * 64) && Game1.player.position.X < (64 * 64) && Game1.player.position.Y > (24 * 64) && Game1.player.position.Y < (27 * 64) &&
+                    (previousPosition.X < (60 * 64) || previousPosition.X > (64 * 64) || previousPosition.Y < (24 * 64) || previousPosition.Y > (27 * 64)))
+                {
+                    DelayedAction.playSoundAfterDelay("drumkit2", 1000, pitch: -1000);
+                    DelayedAction.playSoundAfterDelay("drumkit2", 2000, pitch: -1000);
+                    DelayedAction.playSoundAfterDelay("drumkit2", 3000, pitch: -1000);
+                    DelayedAction.playSoundAfterDelay("drumkit2", 4000, pitch: -1000);
+                    DelayedAction.playSoundAfterDelay("drumkit2", 5000, pitch: -1000);
+                }
 
+                // plays a creaking sound when the player walks into the left hallway
+                if (Game1.player.position.X > (29 * 64) && Game1.player.position.X < (31 * 64) && Game1.player.position.Y > (32 * 64) && Game1.player.position.Y < (36 * 64) &&
+                    (previousPosition.X < (29 * 64) || previousPosition.X > (31 * 64) || previousPosition.Y < (32 * 64) || previousPosition.Y > (36 * 64)))
+                {
+                    // play sound
+                    Game1.currentLocation.localSound("doorCreakReverse");
+                }
+
+                // plays a creaking sound when the player walks left at the top of the stairs
+                if (Game1.player.position.X > (35 * 64) && Game1.player.position.X < (37 * 64) && Game1.player.position.Y > (16 * 64) && Game1.player.position.Y < (21 * 64) &&
+                    (previousPosition.X < (35 * 64) || previousPosition.X > (37 * 64) || previousPosition.Y < (16 * 64) || previousPosition.Y > (21 * 64)))
+                {
+                    // play sound
+                    Game1.currentLocation.localSound("doorCreakReverse");
+                }
+
+                // plays a small thunder sound when the player first walks into the main office
+                if (Game1.player.position.X > (90 * 64) && Game1.player.position.X < (92 * 64) && Game1.player.position.Y > (14 * 64) && Game1.player.position.Y < (17 * 64) && !office && 
+                    (previousPosition.X < (90 * 64) || previousPosition.X > (92 * 64) || previousPosition.Y < (14 * 64) || previousPosition.Y > (17 * 64)))
+                {
+                    // play sound
+                    Game1.currentLocation.localSound("thunder_small");
+                    office = true;
+                }
+
+                // plays a small thunder sound when the player first walks into the main office
+                if (Game1.player.position.X > (6 * 64) && Game1.player.position.X < (9 * 64) && Game1.player.position.Y > (13 * 64) && Game1.player.position.Y < (15 * 64) && !batFlight &&
+                    (previousPosition.X < (6 * 64) || previousPosition.X > (9 * 64) || previousPosition.Y < (13 * 64) || previousPosition.Y > (15 * 64)))
+                {
+                    // play sound
+                    DelayedAction.playSoundAfterDelay("breakingGlass", 1000);
+                    DelayedAction.playSoundAfterDelay("batFlap", 1500);
+                    DelayedAction.playSoundAfterDelay("batFlap", 1700);
+                    DelayedAction.playSoundAfterDelay("batFlap", 1900);
+                    DelayedAction.playSoundAfterDelay("batScreech", 2200);
+                    batFlight = true;
+                }
+                // furnace, explosion, bat screech, bat flap, breaking glass, 
             }
-        }*/
+            /*
+            else if (Game1.currentLocation == Game1.getLocationFromName("FarmHouse"))
+            {
+                if (!soundTest)
+                {
+                    DelayedAction.playSoundAfterDelay("batScreech", 1000);
+                    DelayedAction.playSoundAfterDelay("breakingGlass", 3000);
+                    DelayedAction.playSoundAfterDelay("boulderBreak", 5000);
+                    DelayedAction.playSoundAfterDelay("boulderCrack", 7000);
+                    DelayedAction.playSoundAfterDelay("explosion", 9000);
+                    soundTest = true;
+                }
+            }*/
+            previousPosition = Game1.player.Position;
+        }
     }
 }
