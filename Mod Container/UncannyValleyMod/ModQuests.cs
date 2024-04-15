@@ -139,15 +139,16 @@ namespace UncannyValleyMod
                 Game1.player.addQuest("2051902");
                 
                 // Move player to where they are in the event
-                void teleport(object sender, OneSecondUpdateTickingEventArgs e)
+                void teleport(object sender, UpdateTickingEventArgs e)
                 {
+                    if(Game1.eventUp) { return; }
                     NetPosition position = Game1.player.position;
                     Warp mansionWarp = new Warp((int)(position.X / 64), (int)(position.Y / 64), "Custom_Mansion_Exterior", 23, 37, false);
                     Game1.player.warpFarmer(mansionWarp, 0);
 
-                    helper.Events.GameLoop.OneSecondUpdateTicking -= teleport;
+                    helper.Events.GameLoop.UpdateTicking -= teleport;
                 }
-                helper.Events.GameLoop.OneSecondUpdateTicking += teleport;
+                helper.Events.GameLoop.UpdateTicking += teleport;
             }
             // Meet Butler
             if (Game1.CurrentEvent.id == "2051903")
@@ -160,15 +161,16 @@ namespace UncannyValleyMod
             if (Game1.CurrentEvent.id == "2051904")
             {
                 this.monitor.Log($"Starting Chase Scene", LogLevel.Debug);
-                void teleport(object sender, OneSecondUpdateTickingEventArgs e)
+                void teleport(object sender, UpdateTickingEventArgs e)
                 {
+                    if (Game1.eventUp) { return; }
                     NetPosition position = Game1.player.position;
                     Warp mansionWarp = new Warp((int)(position.X / 64), (int)(position.Y / 64), "Custom_Mansion_Basement_Chase", 78, 71, false);
                     Game1.player.warpFarmer(mansionWarp, 0);
 
-                    helper.Events.GameLoop.OneSecondUpdateTicking -= teleport;
+                    helper.Events.GameLoop.UpdateTicking -= teleport;
                 }
-                helper.Events.GameLoop.OneSecondUpdateTicking += teleport;
+                helper.Events.GameLoop.UpdateTicking += teleport;
             }
         }
 
