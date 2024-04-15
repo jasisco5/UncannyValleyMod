@@ -1,6 +1,6 @@
 // This Displays Mod Information To Console On Launch
 {
-  "Format": "1.30.0",
+  "Format": "2.0.0",
   "Changes": [
     {
       "$ItemType": "MeleeWeapon",

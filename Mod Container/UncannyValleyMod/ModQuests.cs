@@ -28,6 +28,7 @@ namespace UncannyValleyMod
         [EventPriority(EventPriority.Low)]
         private void OnSaveLoaded(object sender, SaveLoadedEventArgs e)
         {
+            // Load Save Data
             if (saveModel.questsObtained.ContainsKey(2051901))
             {
                 questsObtained = saveModel.questsObtained.DeepClone();
@@ -37,8 +38,18 @@ namespace UncannyValleyMod
                 saveModel.questsObtained = questsObtained.DeepClone();
             }
             isBasementOpen = saveModel.isBasementOpen.DeepClone();
-
+            // Make sure Save data matches current version
+            if(!questsObtained.ContainsKey(2051906)) { FixSave(); }
+            // Save dependent functions
             SpawnBasementDoor();
+            if (isBasementOpen && Game1.player.hasQuest("2051905")) { helper.Events.Input.ButtonPressed += this.AttackTotem; }
+        }
+        private void FixSave()
+        {
+            for (int i = 2051901; i <= 2051910; i++)
+            {
+                if(!questsObtained.ContainsKey(i)) { questsObtained[i] = false; }
+            }
         }
         [EventPriority(EventPriority.High)]
         private void OnSaving(object sender, SavingEventArgs e)

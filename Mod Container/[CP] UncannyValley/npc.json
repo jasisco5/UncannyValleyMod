@@ -1,0 +1,153 @@
+{
+  "Changes": [
+    {
+      "Action": "Load",
+      "Target": "Characters/Brennan",
+      "FromFile": "assets/Image/Overworld/Brennan.png"
+    },
+    {
+      "Action": "Load",
+      "Target": "Portraits/Brennan",
+      "FromFile": "assets/Image/Portraits/Brennan.png"
+    },
+    {
+      "Action": "Load",
+      "Target": "Characters/Dialogue/Brennan",
+      "FromFile": "assets/Dialogue/Dialogue.json"
+    },
+    {
+      "Action": "Load",
+      "Target": "Characters/Dialogue/MarriageDialogueBrennan",
+      "FromFile": "assets/Dialogue/MarriageDialogue.json"
+    },
+    {
+      "Action": "Load",
+      "Target": "Characters/schedules/Brennan",
+      "FromFile": "assets/Schedule/Brennan.json"
+    },
+    {
+      "Action": "EditData",
+      "Target": "Data/NPCDispositions",
+      "Entries": {
+        "Brennan": "adult/polite/neutral/positive/male/non-datable//Town/winter 4//Custom_Mansion_Exterior 25 35/Brennan"
+      }
+    },
+    {
+      "Action": "EditData",
+      "Target": "Data/NPCGiftTastes",
+      "Entries": {
+        "Brennan": "You're giving this to me? This is amazing!/207 232 233 400/Thank you! This is a very interesting specimen./-5 -79 422/...What is this?/80 330/This is disgusting./2/That was very thoughtful of you./-4/ "
+      }
+    },
+    {
+      "Action": "EditData",
+      "Target": "Data/EngagementDialogue",
+      "Entries": {
+        "Brennan0": "I can't believe I am about to be married!$h",
+        "Brennan1": "I hope I don't get cold feet"
+      }
+    },
+    {
+      "Action": "Load",
+      "Target": "Characters/Butler",
+      "FromFile": "assets/Image/Overworld/Butler.png"
+    },
+    {
+      "Action": "Load",
+      "Target": "Portraits/Butler",
+      "FromFile": "assets/Image/Portraits/Butler.png"
+    },
+    {
+      "Action": "Load",
+      "Target": "Characters/Dialogue/Butler",
+      "FromFile": "assets/Dialogue/Butler.json"
+    },
+    {
+      "Action": "Load",
+      "Target": "Characters/Dialogue/MarriageDialogueButler",
+      "FromFile": "assets/Dialogue/MarriageDialogue.json"
+    },
+    {
+      "Action": "Load",
+      "Target": "Characters/schedules/Butler",
+      "FromFile": "assets/Schedule/Butler.json"
+    },
+    {
+      "Action": "EditData",
+      "Target": "Data/NPCDispositions",
+      "Entries": {
+        "Butler": "adult/polite/neutral/positive/male/non-datable//Town/winter 4//Custom_Mansion_Interior 51 30/Butler"
+      }
+    },
+    {
+      "Action": "EditData",
+      "Target": "Data/NPCGiftTastes",
+      "Entries": {
+        "Butler": "You're giving this to me? This is amazing!/207 232 233 400/Thank you! This is a very interesting specimen./-5 -79 422/...What is this?/80 330/This is disgusting./2/That was very thoughtful of you./-4/ "
+      }
+    },
+    {
+      "Action": "EditData",
+      "Target": "Data/EngagementDialogue",
+      "Entries": {
+        "Butler0": "I can't believe I am about to be married!$h",
+        "Butler1": "I hope I don't get cold feet"
+      }
+    },
+    {
+      "Action": "Load",
+      "Target": "Data/Events/Custom_Mansion_Exterior",
+      "FromFile": "blank.json"
+    },
+    {
+      "Action": "Load",
+      "Target": "Data/Events/Custom_Mansion_Interior",
+      "FromFile": "blank.json"
+    },
+    {
+      "Action": "Load",
+      "Target": "Data/Events/Custom_Mansion_Basement",
+      "FromFile": "blank.json"
+    },
+    {
+      "Action": "Load",
+      "Target": "Data/Events/Custom_Mansion_Basement_Chase",
+      "FromFile": "blank.json"
+    },
+    {
+      "LogName": "Events",
+      "Action": "EditData",
+      "Target": "Data/Events/Custom_Mansion_Exterior",
+      "Entries": {
+        "2051902/e 100162 2051901": "nightTime/25 37/farmer 23 48 1 Brennan 27 37 0/skippable/move farmer 0 -11 1 false/pause 1000/speak Brennan \"Hi there. Never seen you around here before.\"/pause 1000/speak Brennan \"Name's Brennan. I'm a wizard... or an apprentice one at least.$s#$b#What's your name?\"/pause 1000/speak Brennan \"@ huh? Cool.\"/pause 1200/speak Brennan \"I heard some reports that there was a ghost sighting around here. Came to check it out.#$b#You wanna join me?\"/pause 700/move Brennan -2 0 0 false/move Brennan 0 -10 0 false/playSound doorClose/pause 200/warp Brennan 0 0/pause 500/end"
+      } //e <100162>/e <20020615>
+    },
+    {
+      "LogName": "Events",
+      "Action": "EditData",
+      "Target": "Data/Events/Custom_Mansion_Interior",
+      "Entries": {
+        "2051903/e 2051902": "nightTime/43 42/farmer 44 44 1 Brennan 47 37 0 Butler 19 18 0/skippable/move farmer 0 -7 1 false/pause 1000/speak Brennan \"Interesting place here. I don't think the door has ever been unlocked before.\"/pause 1000/faceDirection Brennan 3 true/speak Brennan \"Oh hey @.$s#$b#This place seems kinda clean for a mansion that's supposedly abandoned, huh?\"/pause 1000/move Butler 25 0 2 true/speak Brennan \"Well, I don't see any ghosts at the moment.\"/pause 1000/viewport move 0 -2 7000/pause 500/speak Butler \"Well, look at this! Guests!\"/faceDirection farmer 0 true/faceDirection Brennan 0 true/emote farmer 40/beginSimultaneousCommand/faceDirection farmer 2 true /jump farmer/emote farmer 16/endSimultaneousCommand/faceDirection farmer 0 true/pause 1000/speak Butler \"Haha! No need for alarm. I'm just a butler, after all.\"/move Butler 0 14 2 false/viewport move 0 1 5000/pause 500/speak Butler \"Welcome to the manor! It's been quite some time since we last had visitors.\"/pause 500/speak Brennan \"Ah, pardon me, but are you a ghost?$u\"/pause 500/speak Butler \"A ghost?$u#$b# Haha! Are you some sort of fantasy role-playing wizard?$h\"/pause 500/beginSimultaneousCommand/emote farmer 40 /emote Brennan 40/endSimultaneousCommand/pause 1000/end",
+        "2051905/e 2051904": "nightTime/54 34/farmer 54 25 2 Brennan 82 33 0 Butler 0 0 0/skippable/speed farmer 5/move farmer 0 15 2 false/emote farmer 28/pause 1000/warp Butler 54 25/move Butler 0 3 2/speak Butler \"Oh... please.$4#$b#Did you really think you could escape so easily, @?$4\"/beginSimultaneousCommand/faceDirection farmer 0 true /jump farmer/emote farmer 16/endSimultaneousCommand/pause 500/temporarySprite 54 39 5 8 20 false 5/temporarySprite 54 39 5 8 20 false 5/pause 200/move farmer 0 1 0 false/emote farmer 28/speak Butler \"Haha!$h#$b#You, are pathetic! $h\"/pause 500/move farmer 0 -13 0/animate farmer true false 50 36 37 38 39 40 41/pause 1000/emote farmer 40/pause 500/beginSimultaneousCommand/faceDirection farmer 0 true /jump farmer/emote farmer 16/endSimultaneousCommand/speak Butler \"Haha! Did you think you could hurt me?$h#$b# You, a simple farmer? $4\"/move farmer 0 3 0 false/pause 500/end"
+
+      }
+    },
+    {
+      "LogName": "Events",
+      "Action": "EditData",
+      "Target": "Data/Events/Farm",
+      "Entries": {
+        "2051901/t 600 800/e 100162": "continue/64 15/farmer 64 16 2 Jodi 64 18 0/skippable/pause 1500/speak Jodi \"Hello. Sorry to bother you so early in the morning.$s#$b#My son Vincent, well, yesterday... $s#$b#He was out playing last night, over by Clint's house, and he said he saw a ghost or something.#$b#I'm sorry to ask you this, but do you mind going and checking it out? Just to ease my fears.#$b#Thank you!$h\"/pause 500/end"
+      }
+    },
+    {
+      "LogName": "Events",
+      "Action": "EditData",
+      "Target": "Data/Events/Custom_Mansion_Basement",
+      "Entries": {
+        "2051904": "nightTime/78 65/farmer 78 58 0 Butler 78 45 0/skippable/move farmer 0 13 2 false/pause 1000/emote farmer 16/pause 1000/animate farmer true false 50 24 25 26 27 28 29/pause 1000/emote farmer 40/pause 1000/emote farmer 40/move Butler 0 20 2 false/speak Butler \"Ah, there it is.#$b#That totem is the reason that those monsters invade this place.#$b#Please, take this sword, and destroy it!$4\"/pause 1000/faceDirection farmer 0 true/move Butler 0 5 2 false/pause 500/itemAboveHead 2051901/pause 1000/awardFestivalPrize 2051901/pause 500/faceDirection farmer 2 false/pause 1000/animate farmer true false 50 24 25 26 27 28 29/pause 500/screenFlash 0.5/emote farmer 16/pause 1000/animate farmer true false 50 24 25 26 27 28 29/pause 500/screenFlash 1/changeLocation Custom_Mansion_Basement_Chase/pause 500/emote farmer 16/pause 1000/viewport move 0 30 10000/speak Butler \"Ah, that's better.#$b#That totem was put there a long time ago, by the master, right before he passed away.#$b#With it in place, he could prevent me from growing too powerful.$4\"/pause 1000 /speak Butler \"It irritated me greatly when he first put it in place, so I made him pay.#$b#And now, you've gone and destroyed it for me.\"/pause 1000/speak Butler \"Heh...heh...#$b#HAHAHAHAHAHAHAHAHAHAHA $1\"/screenFlash 1/warp Butler 0 0/pause 1000/end"
+      }
+    }
+  ]
+}
+		

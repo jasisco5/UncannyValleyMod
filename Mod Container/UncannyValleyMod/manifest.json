@@ -2,12 +2,12 @@
   "$schema": "https://smapi.io/schemas/manifest.json",
   "Name": "UncannyValleyMod",
   "Author": "UncannyValley",
-  "Version": "1.0.1",
+  "Version": "1.0.0-beta",
   "Description": "Horror mod for Stardew Valley",
   "UniqueID": "UncannyValley.UncannyValleyMod",
   "EntryDll": "UncannyValleyMod.dll",
   "MinimumApiVersion": "4.0.0",
-  "UpdateKeys": [],
+  "UpdateKeys": [ "Nexus:20519@Mod" ],
   "Dependencies": [
     {
       "UniqueID": "Pathoschild.ContentPatcher",
