@@ -165,6 +165,9 @@ namespace UncannyValleyMod
             {
                 // Complete Quest
                 Game1.player.completeQuest("2051905");
+                Game1.player.addQuest("2051906");
+                // Get Weapon
+                if (!saveModel.weaponObtained) { modWeapon.AddWeaponToInv(); }
                 // Start Chase Scene
                 this.monitor.Log($"Starting Chase Scene", LogLevel.Debug);
                 void teleport(object sender, UpdateTickingEventArgs e)
@@ -221,8 +224,6 @@ namespace UncannyValleyMod
                 if (!questsObtained[2051905] && Game1.player.hasQuest("2051905"))
                 {
                     questsObtained[2051905] = true;
-                    // Get Weapon
-                    if (!saveModel.weaponObtained) { modWeapon.AddWeaponToInv(); }
                     // Open Basement
                     this.monitor.Log($"{Game1.player.Name} finished quest Act2_3", LogLevel.Debug);
                     Game1.addHUDMessage(HUDMessage.ForCornerTextbox($"Got the key to the Mansion's Basement."));
@@ -329,6 +330,7 @@ namespace UncannyValleyMod
             {
                 Game1.currentLocation.characters.Add(slime);
             }
+            /*
             Monster[] skeletons = new Monster[10];
             skeletons[0] = new Skeleton(new Microsoft.Xna.Framework.Vector2(70 * 64, 27 * 64), false);
             skeletons[1] = new Skeleton(new Microsoft.Xna.Framework.Vector2(8 * 64, 27 * 64),  false);
@@ -345,6 +347,7 @@ namespace UncannyValleyMod
                 Game1.currentLocation.characters.Add(skeleton);
                 Game1.currentLocation.characters.Add(skeleton);
             }
+            */
         }
     }
 }
