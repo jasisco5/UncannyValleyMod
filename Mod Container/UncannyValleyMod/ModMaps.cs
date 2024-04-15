@@ -66,6 +66,11 @@ namespace UncannyValleyMod
                 Game1.isDebrisWeather = false;
                 Game1.isSnowing = false;
                 Game1.performTenMinuteClockUpdate();
+                Game1.timeOfDay -= 10;
+                if (Game1.timeOfDay % 100 > 59)
+                {
+                    Game1.timeOfDay -= 40;
+                }
                 this.Monitor.Log("Entering Uncanny Valley location, rain applied                         | wasRaining = " + wasRaining + " | wasLightning = " + wasLightning + " | wasDebrisWeather = " + wasDebrisWeather + " | wasSnowing = " + wasSnowing, LogLevel.Info);
 
                 // Door warp
@@ -88,6 +93,11 @@ namespace UncannyValleyMod
                 Game1.isDebrisWeather = wasDebrisWeather;
                 Game1.isSnowing = wasSnowing;
                 Game1.performTenMinuteClockUpdate();
+                Game1.timeOfDay -= 10;
+                if (Game1.timeOfDay % 100 > 59)
+                {
+                    Game1.timeOfDay -= 40;
+                }
                 this.Monitor.Log("Leaving Uncanny Valley location, weather changes undone.                           | wasRaining = " + wasRaining + " | wasLightning = " + wasLightning + " | wasDebrisWeather = " + wasDebrisWeather + " | wasSnowing = " + wasSnowing, LogLevel.Info);
             }
             // Player is not entering or leaving the mod's areas
