@@ -19,7 +19,11 @@
       {
         "Name": "Custom_Mansion_Basement_Chase",
         "FromMapFile": "assets/CustomMansionBasementChase.tmx"
-      }
+      },
+      {
+         "Name": "Custom_Mansion_Chase",
+         "FromMapFile": "assets/CustomMansionChase.tmx"
+       }
     ],
 
     "Changes": [
