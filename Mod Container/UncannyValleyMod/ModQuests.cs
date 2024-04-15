@@ -42,7 +42,10 @@ namespace UncannyValleyMod
             if(!questsObtained.ContainsKey(2051906)) { FixSave(); }
             // Save dependent functions
             SpawnBasementDoor();
-            if (isBasementOpen && Game1.player.hasQuest("2051905")) { helper.Events.Input.ButtonPressed += this.AttackTotem; }
+            if (isBasementOpen && Game1.player.hasQuest("2051905"))
+            {
+                helper.Events.GameLoop.UpdateTicking += TriggerBasementEvent;
+            }
         }
         private void FixSave()
         {
@@ -157,9 +160,12 @@ namespace UncannyValleyMod
                 Game1.player.addQuest("2051903");
             }
 
-            // Warp to Chase
+            // Breaking the Totem
             if (Game1.CurrentEvent.id == "2051904")
             {
+                // Complete Quest
+                Game1.player.completeQuest("2051905");
+                // Start Chase Scene
                 this.monitor.Log($"Starting Chase Scene", LogLevel.Debug);
                 void teleport(object sender, UpdateTickingEventArgs e)
                 {
@@ -225,7 +231,9 @@ namespace UncannyValleyMod
                     // Add totem logic
                     this.monitor.Log($"{Game1.player.Name} obtained quest Act2_4", LogLevel.Debug);
 
-                    helper.Events.Input.ButtonPressed += this.AttackTotem;
+
+                    helper.Events.GameLoop.UpdateTicking += TriggerBasementEvent;
+                    //helper.Events.Input.ButtonPressed += this.AttackTotem;
                 }
 
             }
@@ -251,6 +259,7 @@ namespace UncannyValleyMod
         /// <summary>
         /// Act2_4 : Attack the Totem with the Spectral Sabre
         /// </summary>
+        /*
         private void AttackTotem(object sender, ButtonPressedEventArgs e)
         {
             if (Game1.currentLocation == null) { return; }
@@ -267,9 +276,25 @@ namespace UncannyValleyMod
                         Game1.player.completeQuest("2051905");
                         Game1.addHUDMessage(HUDMessage.ForCornerTextbox($"Reached the end of what is currently available."));
                         helper.Events.Input.ButtonPressed -= this.AttackTotem;
-
-                        Game1.PlayEvent("2051904", false, false);
                     }
+                }
+            }
+        }
+        */
+
+        private void TriggerBasementEvent(object sender, UpdateTickingEventArgs e)
+        {
+            if (Game1.eventUp) { return; }
+            if (Game1.currentLocation == Game1.getLocationFromName("Custom_Mansion_Basement"))
+            {
+                Vector2 pos = Game1.player.position.Get();
+                pos = new Vector2((int)(pos.X / 64), (int)(pos.Y / 64));
+                this.monitor.Log($"Player Position is: {pos.X}, {pos.Y}", LogLevel.Debug);
+                //78, 58
+                if ( (pos.X == 78 || pos.X == 77)  && pos.Y == 58)
+                {
+                    helper.Events.GameLoop.UpdateTicking -= TriggerBasementEvent;
+                    Game1.PlayEvent("2051904", false, false);
                 }
             }
         }
