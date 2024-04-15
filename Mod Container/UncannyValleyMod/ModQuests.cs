@@ -267,7 +267,6 @@ namespace UncannyValleyMod
                         Game1.player.completeQuest("2051905");
                         Game1.addHUDMessage(HUDMessage.ForCornerTextbox($"Reached the end of what is currently available."));
                         helper.Events.Input.ButtonPressed -= this.AttackTotem;
-
                         Game1.PlayEvent("2051904", false, false);
                     }
                 }
@@ -319,6 +318,15 @@ namespace UncannyValleyMod
             {
                 Game1.currentLocation.characters.Add(skeleton);
                 Game1.currentLocation.characters.Add(skeleton);
+            }
+        }
+        void KillTheButler()
+        {
+            foreach (NPC npc in Game1.currentLocation.characters)
+            {
+                // Check if the character is the butler before sending them to the shadow realm
+                if (npc.Name != "Butler") continue;
+                Game1.currentLocation.characters.Remove(npc);
             }
         }
     }
