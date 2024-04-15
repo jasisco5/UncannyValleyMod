@@ -356,6 +356,7 @@ namespace UncannyValleyMod
                 // Check if the character is the butler before sending them to the shadow realm
                 if (npc.Name != "Butler") continue;
                 Game1.currentLocation.characters.Remove(npc);
+                return; // Stop iterating once the deed is done
             }
         }
     }
