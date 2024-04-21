@@ -1,5 +1,5 @@
 {
-  "Name": "Energy Potion",
+  "Name": "Apprentice's Potion",
   "Description": "Provides a temporary increase to max energy, while recovering it.",
   "Category": "Cooking",
   "Edibility": 150, 
@@ -15,11 +15,13 @@
     "Speed": 0,
     "Defense": 0,
     "Attack": 0,
-    "Duration": 1714
+    "Duration": 1714,
+	"PurchaseFrom": "STF.UV_WizardApprenticeShop",
+	"PurchasePrice": 200
   },
   "Recipe": null,
   "CanSell": false,
-  "Price": 300,
+  "Price": 200,
   "IsColored": false,
     	"GiftTastes":{
 		"Love":[
@@ -64,10 +66,10 @@
 		]
 	},
   "NameLocalization": {
-    "zh": "能量药水"
+    "zh": ""
   },
   "DescriptionLocalization": {
-    "zh": "由几种高能量物品制作，可以快速回复能量！"
+    "zh": ""
 	
   }
 }
