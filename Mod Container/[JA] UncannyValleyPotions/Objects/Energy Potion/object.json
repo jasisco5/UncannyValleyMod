@@ -15,15 +15,15 @@
     "Speed": 0,
     "Defense": 0,
     "Attack": 0,
-    "Duration": 1714,
-	"PurchaseFrom": "STF.UV_WizardApprenticeShop",
-	"PurchasePrice": 200
+    "Duration": 1714
   },
   "Recipe": null,
   "CanSell": false,
   "Price": 200,
+  "PurchaseFrom": "STF.UV_WizardApprenticeShop",
+  "PurchasePrice": 200,
   "IsColored": false,
-    	"GiftTastes":{
+  "GiftTastes":{
 		"Love":[
 			"Alex",
 			"Caroline",
@@ -64,7 +64,7 @@
 			"Jas",
 			"Sheila"
 		]
-	},
+  },
   "NameLocalization": {
     "zh": ""
   },
