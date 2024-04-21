@@ -9,11 +9,6 @@
 	"UpdateKeys": [ "Nexus:20519@SF" ],
 	"ContentPackFor": {
 		"UniqueID": "Cherry.ShopTileFramework"
-	},
-	"Dependencies": [
-		{
-			"UniqueID": "UncannyValley.UncannyValleyMod"
-		}
-	]
+	}
 }
 
