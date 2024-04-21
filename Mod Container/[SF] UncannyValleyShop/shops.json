@@ -16,85 +16,8 @@
           "ItemType": "Object",
 		  "JAPacks": ["UncannyValley.UncannyValleyPotions"],
           "StockItemCurrency": "Money",
-		  "StockPrice": 200,
-          "Stock": 10
-        },
-		{
-          "ItemType": "Cooking",
-		  "JAPacks": ["UncannyValley.UncannyValleyPotions"],
-          "StockItemCurrency": "Money",
-		  "StockPrice": 200,
-          "Stock": 10
-        },
-		{
-          "ItemType": "Ring",
-		  "JAPacks": ["UncannyValley.UncannyValleyPotions"],
-          "StockItemCurrency": "Money",
-		  "StockPrice": 200,
-          "Stock": 10
-        },
-		{
-          "ItemType": "BigCraftable",
-		  "JAPacks": ["UncannyValley.UncannyValleyPotions"],
-          "StockItemCurrency": "Money",
-		  "StockPrice": 200,
-          "Stock": 10
-        },
-		{
-          "ItemType": "Clothing",
-		  "JAPacks": ["UncannyValley.UncannyValleyPotions"],
-          "StockItemCurrency": "Money",
-		  "StockPrice": 200,
-          "Stock": 10
-        },
-		{
-          "ItemType": "Hat",
-		  "JAPacks": ["UncannyValley.UncannyValleyPotions"],
-          "StockItemCurrency": "Money",
-		  "StockPrice": 200,
-          "Stock": 10
-        },
-		{
-          "ItemType": "Boot",
-		  "JAPacks": ["UncannyValley.UncannyValleyPotions"],
-          "StockItemCurrency": "Money",
-		  "StockPrice": 200,
-          "Stock": 10
-        },
-		{
-          "ItemType": "Furniture",
-		  "JAPacks": ["UncannyValley.UncannyValleyPotions"],
-          "StockItemCurrency": "Money",
-		  "StockPrice": 200,
-          "Stock": 10
-        },
-		{
-          "ItemType": "Weapon",
-		  "JAPacks": ["UncannyValley.UncannyValleyPotions"],
-          "StockItemCurrency": "Money",
-		  "StockPrice": 200,
-          "Stock": 10
-        },
-		{
-          "ItemType": "Wallpaper",
-		  "JAPacks": ["UncannyValley.UncannyValleyPotions"],
-          "StockItemCurrency": "Money",
-		  "StockPrice": 200,
-          "Stock": 10
-        },
-		{
-          "ItemType": "Floors",
-		  "JAPacks": ["UncannyValley.UncannyValleyPotions"],
-          "StockItemCurrency": "Money",
-		  "StockPrice": 200,
-          "Stock": 10
-        },
-		{
-          "ItemType": "Seed",
-		  "JAPacks": ["UncannyValley.UncannyValleyPotions"],
-          "StockItemCurrency": "Money",
-		  "StockPrice": 200,
-          "Stock": 10
+		  "StockPrice": 250,
+          "Stock": 3
         },
 		{
           "ItemType": "Object",
