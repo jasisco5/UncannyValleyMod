@@ -289,21 +289,46 @@ namespace UncannyValleyMod
                     DelayedAction.playSoundAfterDelay("batScreech", 2200);
                     batFlight = true;
                 }
-                // furnace, explosion, bat screech, bat flap, breaking glass, 
             }
-            /*
+            else if (Game1.currentLocation == Game1.getLocationFromName("Custom_Mansion_Basement"))
+            {
+                // plays water drops when the player first gets to the main part of the basement
+                if ( Game1.player.position.Y > (40 * 64) && previousPosition.Y < (40 * 64))
+                {
+                    // play sound
+                    DelayedAction.playSoundAfterDelay("dwop", 400, pitch: 100);
+                    DelayedAction.playSoundAfterDelay("dwop", 800, pitch: 100);
+                    DelayedAction.playSoundAfterDelay("dwop", 1200, pitch: 100);
+                }
+
+                // plays a steam sound when the player enters the boiler room
+                if (Game1.player.position.Y > (53 * 64) && previousPosition.Y < (53 * 64))
+                {
+                    // play sound
+                    DelayedAction.playSoundAfterDelay("steam", 200);
+                    DelayedAction.playSoundAfterDelay("steam", 1000);
+                }
+
+                // plays a furnace sound when the player walks near the furnace in the boiler room
+                if (Game1.player.position.X > (13 * 64) && Game1.player.position.X < (18 * 64) && Game1.player.position.Y > (54 * 64) && Game1.player.position.Y < (57 * 64) &&
+                    (previousPosition.X < (13 * 64) || previousPosition.X > (18 * 64) || previousPosition.Y < (54 * 64) || previousPosition.Y > (57 * 64)))
+                {
+                    // play sound
+                    Game1.currentLocation.localSound("furnace");
+                }
+            }
             else if (Game1.currentLocation == Game1.getLocationFromName("FarmHouse"))
             {
                 if (!soundTest)
                 {
-                    DelayedAction.playSoundAfterDelay("batScreech", 1000);
-                    DelayedAction.playSoundAfterDelay("breakingGlass", 3000);
-                    DelayedAction.playSoundAfterDelay("boulderBreak", 5000);
-                    DelayedAction.playSoundAfterDelay("boulderCrack", 7000);
-                    DelayedAction.playSoundAfterDelay("explosion", 9000);
+                    DelayedAction.playSoundAfterDelay("dwop", 1000, pitch: 100);
+                    DelayedAction.playSoundAfterDelay("dwop", 3000, pitch: 100);
+                    DelayedAction.playSoundAfterDelay("hammer", 5000);
+                    DelayedAction.playSoundAfterDelay("gulp", 7000);
+                    DelayedAction.playSoundAfterDelay("steam", 9000);
                     soundTest = true;
                 }
-            }*/
+            }
             previousPosition = Game1.player.Position;
         }
     }
