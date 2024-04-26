@@ -1,0 +1,12 @@
+{
+	"$schema": "https://smapi.io/schemas/manifest.json",
+	"Name": "UncannyValleyPotions",
+	"Author": "UncannyValley",
+	"Version": "0.5.0-beta",
+	"Description": "UncannyValley's Potions",
+	"UniqueID": "UncannyValley.UncannyValleyPotions",
+	"UpdateKeys": [ "Nexus:20519@JA" ],
+	"ContentPackFor": {
+		"UniqueID": "spacechase0.JsonAssets"
+	}
+}
