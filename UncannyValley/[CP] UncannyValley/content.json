@@ -33,6 +33,10 @@
     {
       "Action": "Include",
       "FromFile": "quest.json"
+    },
+    {
+      "Action": "Include",
+      "FromFile": "npc.json"
     }
   ]
 }

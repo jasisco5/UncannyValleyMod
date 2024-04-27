@@ -22,10 +22,13 @@
 {
 
 	"Introduction": "Welcome to the manor, I suppose. As stated, I am the butler of this establishment.$s#$b# The master is currently out, and has been for quite some time.",
-	"Mon": "Y'know, you look a little bit like that farmer who lives out to the west. I wonder how he's doing nowadays.",
-	"Tue": "Welcome again, friend. And happy Tuesday.#$b# I do hope your monster hunts have been going well.",
-	"Wed": "What a wonderful Wednesday. I hope you are well.",
-	"Thu": "Wherever the master is now, I hope he is proud of me for how well I have taken care of his home.",
-	"Fri": "Sigh... another Friday of cleaning dust off of everything.$2"
+	"Mon": "Hey @, I got a quick question for you...#$b#$q 6000/6001 mon_template#Did you believe in ghosts before this whole thing?#$r 6000 250 mon_yes#Sure did#$r 6001 500 mon_no#Nope",
+	"mon_yes": "I always believed they were real. I mean, they had to exist somewhere, right?",
+	"mon_no": "No? Huh, I always did.",
+	"mon_template": "$p 6000#I mean, ghosts are really cool when you think about it.",
+	"Tue": "Ghosts huh? I guess stranger things have happened.",
+	"Wed": "It's crazy to think that there were ghosts living near us this whole time.",
+	"Thu": "I remember as a kid, I thought my uncle was the coolest guy in the world!#$b#Now, eh, he's still cool I guess...",
+	"Fri": "It's friday, and I am at a ghost mansion."
 
 }
