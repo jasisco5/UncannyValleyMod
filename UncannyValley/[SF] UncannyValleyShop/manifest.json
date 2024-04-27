@@ -1,0 +1,14 @@
+{
+	"$schema": "https://smapi.io/schemas/manifest.json",
+	"Name": "UncannyValleyShop",
+	"Author": "UncannyValley",
+	"Version": "0.5.0-beta",
+	"Description": "The Wizard Aprrentice's shop from Uncanny Valley.",
+	"UniqueID": "UncannyValley.UncannyValleyShop",
+	"MinimumApiVersion": "4.0.0",
+	"UpdateKeys": [ "Nexus:20519@SF" ],
+	"ContentPackFor": {
+		"UniqueID": "Cherry.ShopTileFramework"
+	}
+}
+

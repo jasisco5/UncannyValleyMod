@@ -106,7 +106,7 @@
                "Position": {"X": 13, "Y": 27},
                "Layer": "Buildings",
                "SetProperties": {
-                  "Action": "Dialogue You look into the mirror. Despite everything, it's still you."
+                  "Action": "Dialogue Despite everything, it's still you."
                }
             },
             {
