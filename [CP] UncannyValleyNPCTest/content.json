@@ -1,156 +1,141 @@
 {
-    "Format": "1.30.4",
-  "Changes": [
-    {
-      "Action": "Load",
-      "Target": "Characters/Apprentice",
-      "FromFile": "assets/Image/Overworld/Apprentice.png"
-    },
-    {
-      "Action": "Load",
-      "Target": "Portraits/Apprentice",
-      "FromFile": "assets/Image/Portraits/Apprentice.png"
-    },
-    {
-      "Action": "Load",
-      "Target": "Characters/Dialogue/Apprentice",
-      "FromFile": "assets/Dialogue/Dialogue.json"
-    },
-    {
-      "Action": "Load",
-      "Target": "Characters/Dialogue/MarriageDialogueApprentice",
-      "FromFile": "assets/Dialogue/MarriageDialogue.json"
-    },
-    {
-      "Action": "Load",
-      "Target": "Characters/schedules/Apprentice",
-      "FromFile": "assets/Schedule/Brennan.json"
-    },
-    {
-      "Action": "EditData",
-      "Target": "Data/NPCDispositions",
-      "Entries": {
-        "Apprentice": "adult/polite/neutral/positive/male/non-datable//Town/winter 4//Custom_Mansion_Interior 85 32/Apprentice"
-      }
-    },
-    {
-      "Action": "EditData",
-      "Target": "Data/NPCGiftTastes",
-      "Entries": {
-        "Apprentice": "You're giving this to me? This is amazing!/207 232 233 400/Thank you! This is a very interesting specimen./-5 -79 422/...What is this?/80 330/This is disgusting./2/That was very thoughtful of you./-4/ "
-      }
-    },
-    {
-      "Action": "EditData",
-      "Target": "Data/EngagementDialogue",
-      "Entries": {
-        "Apprentice0": "I can't believe I am about to be married!$h",
-        "Apprentice1": "I hope I don't get cold feet"
-      }
-    },
-    /* {
-      "Format": "2.0.0",
-      "Changes": [
-          {
-              "Action": "EditData",
-              "Target": "Data/Characters",
-              "Entries": {
-                  "{{20519}}_Apprentice": {
-                      "DisplayName": "Apprentice", // this would normally use {{i18n:}} to support translations
-                      "BirthSeason": "Winter",
-                      "BirthDay": 4,
-                      "HomeRegion": "Town",
-                      "Gender": "Undefined",
-                      "Age": "Adult",
-                      "Manner": "Polite",
-                      "SocialAnxiety": "Outgoing",
-                      "Optimism": "Neutral",
-  
-                      "CanBeRomanced": false,
-                      "LoveInterest": "",
-  
-                      "Home": [
-                          {
-                              "Id": "Custom_Mansion_Interior",
-                              "Location": "Custom_Mansion_Interior",
-                              "Tile": { "X": 85, "Y": 32 },
-                              "Direction": "down"
-                          }
-                      ]
-                  }
+    "Format": "2.0.0",
+
+
+    "Changes": [
+      {
+          "LogName":"Apprentice Dispositions",
+          "Action":"EditData",
+          "Target":"Data/Characters",
+          "Entries": {
+              "Apprentice": {
+                  "DisplayName":"Apprentice",
+                  "BirthSeason":"Winter",
+                  "BirthDay":4,
+                  "HomeRegion":"Other",
+                  "Gender":"Undefined",
+                  "Age":"Adult",
+                  "Manner":"Polite",
+                  "SocialAnxiety":"Outgoing",
+                  "Optimism":"Neutral",
+                  "CanBeRomanced":false,
+                  "LoveInterest":null,
+                  "SocialTab":"UnknownUntilMet",
+                  "ExcludeFromIntroductionsQuest":true,
+                  "ExcludeFromPerfectionScore":false,
+                  "EndSlideShow":"TrailingGroup",
+                  "FriendsAndFamily":{},
+                  "SpawnIfMissing":true,
+                  "Home": [
+                      {
+                          "Id": "Default",
+                                  "Location": "Custom_Mansion_Interior",
+                                  "Tile": { "X": 85, "Y": 32 },
+                                  "Direction": "Down"
+                      }
+                  ],
+                  "Breather":true
               }
           }
-      ]
-  },
-
-  {
-    "Action": "Load",
-    "Target": "Characters/Apprentice, Portraits/Apprentice",
-    "FromFile": "assets/Image/Portraits/Apprentice.png"
-},
-
-// add NPC
-{
-    "Action": "EditData",
-    "Target": "Data/Characters",
-    "Entries": {
-        "UncannyValley.20519_Apprentice": {
-            "Appearance": [
-                {
-                    "Id": "Apprentice",
-                    "Portrait": "Portraits/Apprentice",
-                    "Sprite": "Characters/Apprentice"
-                }
-            ]
+      },
+      {
+          "LogName": "Apprentice's Sprites",
+          "Action": "Load",
+          "Target": "Characters/Apprentice",
+          "FromFile": "assets/Image/Overworld/Apprentice.png"
+      },
+      {
+          "LogName": "Apprentice's Portrait",
+          "Action": "Load",
+          "Target": "Portraits/Apprentice",
+          "FromFile": "assets/Image/Portraits/Apprentice.png"
+      },
+      {
+          "LogName": "Apprentices's Dialogue",
+          "Action": "Load",
+          "Target": "Characters/Dialogue/Apprentice",
+          "FromFile": "assets/Dialogue/Dialogue.json"
+      },
+      {
+          "LogName": "Apprentice's Schedule",
+          "Action": "Load",
+          "Target": "Characters/schedules/Apprentice",
+          "FromFile": "assets/Schedule/Apprentice.json"
+      },
+      {
+          "LogName": "Apprentice Gift Tastes",
+          "Action": "EditData",
+          "Target": "Data/NPCGiftTastes",
+          "Entries": {
+              "Apprentice": "You're giving this to me? This is amazing!/207 232 233 400/Thank you! This is a very interesting specimen./-5 -79 422/...What is this?/80 330/This is disgusting./2/That was very thoughtful of you./-4/ "
         }
-    }
-}, */
-
-    {
-      "Action": "Load",
-      "Target": "Characters/Butler",
-      "FromFile": "assets/Image/Overworld/Butler.png"
+      },
+      
+      {
+        "LogName":"Butler Dispositions",
+        "Action":"EditData",
+        "Target":"Data/Characters",
+        "Entries": {
+            "Butler": {
+                "DisplayName":"Butler",
+                "BirthSeason":"Winter",
+                "BirthDay":4,
+                "HomeRegion":"Other",
+                "Gender":"Male",
+                "Age":"Adult",
+                "Manner":"Polite",
+                "SocialAnxiety":"Outgoing",
+                "Optimism":"Neutral",
+                "CanBeRomanced":false,
+                "LoveInterest":null,
+                "SocialTab":"UnknownUntilMet",
+                "ExcludeFromIntroductionsQuest":true,
+                "ExcludeFromPerfectionScore":true,
+                "EndSlideShow":"TrailingGroup",
+                "FriendsAndFamily":{},
+                "SpawnIfMissing":true,
+                "Home": [
+                    {
+                        "Id": "Default",
+                                "Location": "Custom_Mansion_Interior",
+                                "Tile": { "X": 51, "Y": 30 },
+                                "Direction": "Down"
+                    }
+                ],
+                "Breather":true
+            }
+        }
     },
     {
-      "Action": "Load",
-      "Target": "Portraits/Butler",
-      "FromFile": "assets/Image/Portraits/Butler.png"
+        "LogName": "Butler's Sprites",
+        "Action": "Load",
+        "Target": "Characters/Butler",
+        "FromFile": "assets/Image/Overworld/Butler.png"
     },
     {
-      "Action": "Load",
-      "Target": "Characters/Dialogue/Butler",
-      "FromFile": "assets/Dialogue/Butler.json"
+        "LogName": "Butler's Portrait",
+        "Action": "Load",
+        "Target": "Portraits/Butler",
+        "FromFile": "assets/Image/Portraits/Butler.png"
     },
     {
-      "Action": "Load",
-      "Target": "Characters/Dialogue/MarriageDialogueButler",
-      "FromFile": "assets/Dialogue/MarriageDialogue.json"
+        "LogName": "Butler's Dialogue",
+        "Action": "Load",
+        "Target": "Characters/Dialogue/Butler",
+        "FromFile": "assets/Dialogue/Butler.json"
     },
     {
-      "Action": "Load",
-      "Target": "Characters/schedules/Butler",
-      "FromFile": "assets/Schedule/Butler.json"
+        "LogName": "Butler's Schedule",
+        "Action": "Load",
+        "Target": "Characters/schedules/Butler",
+        "FromFile": "assets/Schedule/Butler.json"
     },
     {
-      "Action": "EditData",
-      "Target": "Data/NPCDispositions",
-      "Entries": {
-        "Butler": "adult/polite/neutral/positive/male/non-datable//Town/winter 4//Custom_Mansion_Interior 51 30/Butler"
-      }
-    },
-    {
-      "Action": "EditData",
-      "Target": "Data/NPCGiftTastes",
-      "Entries": {
-        "Butler": "You're giving this to me? This is amazing!/207 232 233 400/Thank you! This is a very interesting specimen./-5 -79 422/...What is this?/80 330/This is disgusting./2/That was very thoughtful of you./-4/ "
-      }
-    },
-    {
-      "Action": "EditData",
-      "Target": "Data/EngagementDialogue",
-      "Entries": {
-        "Butler0": "I can't believe I am about to be married!$h",
-        "Butler1": "I hope I don't get cold feet"
+        "LogName": "Butler Gift Tastes",
+        "Action": "EditData",
+        "Target": "Data/NPCGiftTastes",
+        "Entries": {
+            "Apprentice": "You're giving this to me? This is amazing!/207 232 233 400/Thank you! This is a very interesting specimen./-5 -79 422/...What is this?/80 330/This is disgusting./2/That was very thoughtful of you./-4/ "
       }
     },
     {
@@ -184,7 +169,7 @@
       "Target": "Data/Events/Custom_Mansion_Exterior",
       "Entries": {
         "2051902/e 100162 2051901": "nightTime/25 37/farmer 23 48 1 Apprentice 27 37 0/skippable/move farmer 0 -11 1 false/pause 1000/speak Apprentice \"Hi there. Never seen you around here before.\"/pause 1000/speak Apprentice \"Name's Apprentice. I'm a wizard... or an apprentice one at least.$s#$b#What's your name?\"/pause 1000/speak Apprentice \"@ huh? Cool.\"/pause 1200/speak Apprentice \"I heard some reports that there was a ghost sighting around here. Came to check it out.#$b#You wanna join me?\"/pause 700/move Apprentice -2 0 0 false/move Apprentice 0 -10 0 false/playSound doorClose/pause 200/warp Apprentice 0 0/pause 500/end"
-      } //e <100162>/e <20020615>
+      } 
     },
     {
       "LogName": "Events",
@@ -218,6 +203,9 @@
         "2051904/p Butler": "nightTime/78 65/farmer 78 58 0 Butler 78 45 0/skippable/move farmer 0 13 2 false/pause 1000/emote farmer 16/pause 1000/animate farmer true false 50 24 25 26 27 28 29/pause 1000/emote farmer 40/pause 1000/emote farmer 40/move Butler 0 20 2 false/speak Butler \"Ah, there it is.#$b#That totem is the reason that those monsters invade this place.#$b#Please, take this sword, and destroy it!$3\"/pause 1000/faceDirection farmer 0 true/move Butler 0 5 2 false/pause 500/itemAboveHead 2051901/pause 1000/awardFestivalPrize 2051901/pause 500/faceDirection farmer 2 false/pause 1000/animate farmer true false 50 24 25 26 27 28 29/pause 500/screenFlash 0.5/emote farmer 16/pause 1000/animate farmer true false 50 24 25 26 27 28 29/pause 500/screenFlash 1/changeLocation Custom_Mansion_Basement_Chase/pause 500/emote farmer 16/pause 1000/viewport move 0 3 5000/speak Butler \"Ah, that's better.#$b#That totem was put there a long time ago, by the master, right before he passed away.#$b#With it in place, he could prevent me from growing too powerful.$3\"/pause 1000 /speak Butler \"It irritated me greatly when he first put it in place, so I made him pay.#$b#And now, you've gone and destroyed it for me.\"/pause 1000/speak Butler \"Heh...heh...#$b#HAHAHAHAHAHAHAHAHAHAHA $1\"/screenFlash 1/warp Butler 0 0/pause 1000/end"
       }
     }
+  
   ]
+    
+  
 }
 		
