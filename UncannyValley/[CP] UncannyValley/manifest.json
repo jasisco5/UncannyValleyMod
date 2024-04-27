@@ -2,7 +2,7 @@
   "$schema": "https://smapi.io/schemas/manifest.json",
   "Name": "UncannyValleyCP",
   "Author": "UncannyValley",
-  "Version": "0.5.0-beta",
+  "Version": "0.5.5-beta",
   "Description": "Uncanny Valley Content Patches",
   "UniqueID": "UncannyValley.UncannyValleyCP",
   "MinimumApiVersion": "4.0.0",
