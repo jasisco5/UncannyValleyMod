@@ -317,18 +317,6 @@ namespace UncannyValleyMod
                     Game1.currentLocation.localSound("furnace");
                 }
             }
-            else if (Game1.currentLocation == Game1.getLocationFromName("FarmHouse"))
-            {
-                if (!soundTest)
-                {
-                    DelayedAction.playSoundAfterDelay("dwop", 1000, pitch: 100);
-                    DelayedAction.playSoundAfterDelay("dwop", 3000, pitch: 100);
-                    DelayedAction.playSoundAfterDelay("hammer", 5000);
-                    DelayedAction.playSoundAfterDelay("gulp", 7000);
-                    DelayedAction.playSoundAfterDelay("steam", 9000);
-                    soundTest = true;
-                }
-            }
             previousPosition = Game1.player.Position;
         }
     }
